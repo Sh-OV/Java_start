@@ -38,7 +38,7 @@ public class Main {
         System.out.println("\n 3. Все кратные " +  n + " числа в диапазоне от " + i + " до " + Short.MAX_VALUE + ":");
         PrintArr(m1);
 //4. Найти все некратные n числа в диапазоне от Short.MIN_VALUE до i и сохранить в массив m2
-        k = i;
+        k = Short.MIN_VALUE;
         int len_min = i - Short.MIN_VALUE;
         int len_m2 = len_min + 1 - LenArr(Short.MIN_VALUE, i, n);
         int[] m2 = new int[len_m2];
@@ -46,7 +46,6 @@ public class Main {
         for (int j = 0; j < len_min; j++) {
             if (!Multiple(k, n)) {
                 m2[count] = k;
-                System.out.println("m2[" + count+ "] = " + m2[count] + "; k = " + k + "; count = " + count);
                 count ++;
             }
             k++;
@@ -67,8 +66,8 @@ public class Main {
     static void PrintArr(int[] arr){
           System.out.print("{");
         for (int j = 0; j < arr.length-1; j++) {
-            if (j > 9 && j % 10 == 0) {
-                System.out.print(arr[j] + ", \n");
+            if (j >= 25 && j % 25 == 0) {
+                System.out.print("\n");
             }
             System.out.print(arr[j] + ",");
         }
