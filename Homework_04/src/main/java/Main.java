@@ -14,43 +14,37 @@ import java.util.Scanner;
 
 public class Main {
     static LinkedList<ArrayList<String>> contact_users = new LinkedList<>();
-    static LinkedList<Integer> id = new LinkedList<>();
     static Scanner user_scan = new Scanner(System.in);
 
-    static int i = -1;
-
     public static void main(String[] args) {
-        data_entry_conditions(contact_users, id);
-        print_user(contact_users, id);
+        data_entry_conditions(contact_users);
+        print_user(contact_users);
         sorting_index(contact_users,3);
-        print_user(contact_users, id);
+        print_user(contact_users);
     }
 
-    private static ArrayList<String> user_data_entry(LinkedList<Integer> lli) {
-        i++;
-        lli.add(i);
+    private static ArrayList<String> user_data_entry() {
         ArrayList<String> user = new ArrayList<>();
-        //System.out.println("Введите Фамилию: ");      // т.к. подключен файл из которого берутся данные, ввод из консоли неактуален
+        System.out.println("Введите Фамилию: ");      // т.к. подключен файл из которого берутся данные, ввод из консоли неактуален
         String last_name = user_scan.nextLine();
         user.add(last_name);
-        //System.out.println("Введите Имя: ");
+        System.out.println("Введите Имя: ");
         String first_name = user_scan.nextLine();
         user.add(first_name);
-        //System.out.println("Введите Отчество: ");
+        System.out.println("Введите Отчество: ");
         String patronymic = user_scan.nextLine();
         user.add(patronymic);
-        //System.out.println("Введите возраст: ");
+        System.out.println("Введите возраст: ");
         String age = user_scan.nextLine();
         user.add(age);
-        //System.out.println("Введите пол: ");
+        System.out.println("Введите пол: ");
         String gender = user_scan.nextLine();
         user.add(gender);
         return user;
     }
 
-    private static void print_user(LinkedList<ArrayList<String>> lls, LinkedList<Integer> li) {
+    private static void print_user(LinkedList<ArrayList<String>> lls) {
         for (int j = 0; j < lls.size(); j++) {
-            System.out.print(li.get(j) + ". ");
             System.out.print(lls.get(j).get(0) + " ");
             System.out.print(lls.get(j).get(1).toUpperCase().charAt(0) + ".");
             System.out.print(lls.get(j).get(2).toUpperCase().charAt(0) + ". ");
@@ -59,13 +53,13 @@ public class Main {
         }
     }
 
-    private static void data_entry_conditions(LinkedList<ArrayList<String>> lls, LinkedList<Integer> lli) {
+    private static void data_entry_conditions(LinkedList<ArrayList<String>> lls) {
         String command;
-        //System.out.println("Введите 'д' для ввода новой записи и любую клавишу для завершения ввода данных");
+        System.out.println("Введите 'д' для ввода новой записи и любую клавишу для завершения ввода данных: ");
         command = user_scan.nextLine();
         while (command.equals("д")) {
-            lls.add(user_data_entry(lli));
-            //   System.out.println("Введите 'д' для ввода новой записи и любую клавишу для завершения ввода данных");
+            lls.add(user_data_entry());
+            System.out.println("Введите 'д' для ввода новой записи и любую клавишу для завершения ввода данных: ");
             command = user_scan.nextLine();
         }
     }
