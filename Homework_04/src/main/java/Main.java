@@ -6,7 +6,6 @@
 4. Два варианта продолжения, либо вывод списка сортированного по возрасту и полу либо завершение приложения.
 Реализовать сортировку, по возможности, с использованием дополнительного индексного списка.
  */
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -19,7 +18,11 @@ public class Main {
     public static void main(String[] args) {
         data_entry_conditions(contact_users);
         print_user(contact_users);
+        System.out.println("\n Сортировка по возрасту: ");
         sorting_index(contact_users,3);
+        print_user(contact_users);
+        System.out.println("\n Сортировка по полу: ");
+        sorting_index(contact_users,4);
         print_user(contact_users);
     }
 
@@ -68,34 +71,12 @@ public class Main {
         Comparator<ArrayList<String>> sorting = new Comparator<ArrayList<String>>() {
             @Override
             public int compare(ArrayList<String> o1, ArrayList<String> o2) {
-                if (Integer.parseInt(o1.get(arg)) > Integer.parseInt(o2.get(arg))) return 1;
-                else if (Integer.parseInt(o1.get(arg)) < Integer.parseInt(o2.get(arg))) return -1;
+                if (o1.get(arg).charAt(0) > o2.get(arg).charAt(0)) return 1;
+                else if (o1.get(arg).charAt(0) < o2.get(arg).charAt(0)) return -1;
                 else return 0;
             }
         };
         lls.sort(sorting);
     }
-
- /*   public static void sorting_index_1(LinkedList<Integer> lli, LinkedList<ArrayList<String>> lls, int arg) {
-        //LinkedList <Integer> temp = new LinkedList<>();
-        //temp = lli;
-        for (int i = 0; i < lls.size()-1; i++) {
-            for(int j = 0; j < lls.size() - i-1; j++) {
-            if (Integer.parseInt(lls.get(j).get(arg)) > Integer.parseInt(lls.get(j + 1).get(arg))) {
-                System.out.println("lli.get(j) = " + lli.get(j) + "\n" +
-                                    "lli.get(j+1) = " + lli.get(j-1));
-                int help = lli.get(j);
-                lli.set(j,(j+1));
-                lli.set((j+1),help);
-                System.out.println("lli.get(j) = " + lli.get(j) + "\n" +
-                        "lli.get(j+1) = " + lli.get(j-1));
-            }
-            }
-        }
-        System.out.println(lli);
-    }
-*/
-
-
-
 }
+
