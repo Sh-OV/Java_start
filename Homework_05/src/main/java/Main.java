@@ -5,27 +5,21 @@
 *Популярность не имён а номеров телефонов
  */
 
-import javax.swing.text.html.parser.Entity;
-import java.io.*;
 import java.util.*;
 
 public class Main {
     static HashMap<String, String> users_contacts = new HashMap<>();
+    static HashMap<String, Integer> popular = new HashMap<>();
     static Scanner user_scan = new Scanner(System.in);
     static Set<String> keys = users_contacts.keySet();
 
     public static void main(String[] args) {
 
         user_data(users_contacts);
-        users_contacts.forEach((k, v) -> System.out.println(v + ", " + k));
-         System.out.println("=".repeat(30));
-         making_changes(keys, users_contacts);
-        /*System.out.println("=".repeat(30));
-        System.out.println(users_contacts.keySet());
+        users_contacts.forEach((k, v) -> System.out.println(k + ", " + v));
         System.out.println("=".repeat(30));
-        System.out.println(users_contacts.values());
-        System.out.println("=".repeat(30));
-        System.out.println(users_contacts.entrySet());*/
+        popular_rand(making_changes(users_contacts), popular);
+        sorting_popular(popular, users_contacts);
     }
 
     private static void user_data(HashMap<String, String> hm) {
@@ -43,16 +37,22 @@ public class Main {
         }
     }
 
-    private static void making_changes(Set<String> ss, HashMap<String, String> hm) {
-        Iterator<String> it = ss.iterator();
-        while (it.hasNext()) {
-            String v = hm.get(it.next());
-            System.out.println(v + ", ");
-
-        }
+    private static ArrayList<String> making_changes(HashMap<String, String> hm) {
+        ArrayList<String> keys_arr = new ArrayList<>();
+        hm.forEach((k, v) -> keys_arr.add(k +", " + v));
+        return keys_arr;
     }
 
-
+    public static void popular_rand(ArrayList<String> l, HashMap<String, Integer> hm) {
+        for (int j = 0; j < l.size(); j++) {
+            hm.put(l.get(j), new Random().nextInt(55));
+        }
+    }
+    public static void sorting_popular(HashMap<String, Integer> hmi, HashMap<String, String> hms){
+        TreeMap<Integer, String> t_map = new TreeMap<>();
+        hmi.forEach((k,v) -> t_map.put(v,k));
+        t_map.forEach((k, v) -> System.out.println(k + ", " + v));
+    }
 }
 
 
