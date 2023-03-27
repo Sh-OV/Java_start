@@ -23,14 +23,18 @@ public class Hw5 {
             ArrayList<String> n = new ArrayList<>();
             System.out.println("Контактное лицо: ");      // т.к. подключен файл из которого берутся данные, ввод из консоли неактуален
             String user = user_scan.nextLine();
-            System.out.println("Номер телефона домашний: ");
+            System.out.println("Номер домашнего телефона: ");
             String number_phone = user_scan.nextLine();
             n.add(number_phone);
-            uc.putIfAbsent(user, n);
+            System.out.println("Номер рабочего телефона: ");
+            number_phone = user_scan.nextLine();
+            n.add(number_phone);
+            System.out.println("Номер личного телефона: ");
+            number_phone = user_scan.nextLine();
+            n.add(number_phone);
+            uc.put(user, n);
             System.out.println("Введите 'д' для ввода новой записи и любую клавишу для завершения ввода данных: ");
             consol = user_scan.nextLine();
         }
     }
-
- //   private static void add_number(HashMap<String, ArrayList<String>> uc) {
 }
