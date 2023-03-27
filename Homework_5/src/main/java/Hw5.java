@@ -5,16 +5,14 @@
 *Популярность не имён а номеров телефонов
  */
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Hw5 {
     static ArrayList<String> user = new ArrayList<>();
     static ArrayList<String> number_phone = new ArrayList<>();
     static Scanner user_scan = new Scanner(System.in);
     static HashMap<String, ArrayList<String>> users_contacts = new HashMap<>();
+    static HashMap<String, Integer> popular = new HashMap<>();
 
     public static void main(String[] args) {
         user_data(users_contacts);
