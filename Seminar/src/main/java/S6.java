@@ -27,7 +27,8 @@ public class S6 {
         ms.delete(3);
         ms.print();
         System.out.println(ms.get(2));
-        System.out.println(ms.toArray());
+        System.out.println(ms.toArrayKey());
+        System.out.println(ms.toArrayValue(10));
     }
 }
 
@@ -68,9 +69,21 @@ class MySet {
         return (int) this.hm.keySet().toArray()[index];
     }
 
-    public ArrayList<Integer> toArray() {
-       return new ArrayList<>(this.hm.keySet());
+    public ArrayList<Integer> toArrayKey() {
+       return new ArrayList<Integer>(this.hm.keySet());
     }
-}
+    public ArrayList<Integer> toArrayValue(int element){
+        if(!hm.containsKey(element)) return null;
+        ArrayList<Integer> output = new ArrayList<>();
+        for (int k : hm.keySet()) {
+            output.add(k);
+            if(k == element) break;
+        }
+        
+       return output;
+        }
+
+    }
+
 
 
