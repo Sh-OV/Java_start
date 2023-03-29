@@ -29,13 +29,13 @@
 
 	Основные характеристики героев:
 N  Name-hero  hp  step  attack  def  damage  comm  arrows  accuracy  manna gain%
-1     Маг     80   4     20     10    5-10   true                     70
-2    Монах    70   4     20     10    5-10   false                    80
-3   Копейщик  45   6     18     6     8-12   true                            20
-4  Разбойник  40   6     18     8     8-12   false                           20
-5 Арбалетчик  30   3     15     6    10-20   true    10      70
-6   Снайпер   35   3     15     5    10-20  false     8      80
-7 Крестьянин  50   8      5     3    15-30 true/false
+1     Маг     80   4     20     10    5-10   true                     70            Magician
+2    Монах    70   4     20     10    5-10   false                    80            Monk
+3   Копейщик  45   6     18     6     8-12   true                            20     Spearman
+4  Разбойник  40   6     18     8     8-12   false                           20     Outlaw
+5 Арбалетчик  30   3     15     6    10-20   true    10      70                     Crossbowman
+6   Снайпер   35   3     15     5    10-20  false     9      80                     Sniper
+7 Крестьянин  50   8      5     3    15-30 true/false                               Peasant
 
 
 

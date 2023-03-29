@@ -21,5 +21,10 @@ public abstract class BaseHero {
         this.damage = damage;
         this.command = command;
     }
+    @Override
+    public String toString(){
+        return name;
+    }
+
 }
 

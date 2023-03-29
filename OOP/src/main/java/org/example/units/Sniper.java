@@ -5,8 +5,8 @@ public class Sniper extends BaseHero {
             accuracy;           // точность
 
     public Sniper(String name, int x, int y) {
-        super(name, y, x, 7, 3, 12, 3, new int[]{6, 12}, false);
-        this.arrows = 10;
-        this.accuracy = 70;
+        super(name, y, x, 35, 3, 15, 5, new int[]{10, 20}, false);
+        this.arrows = 9;
+        this.accuracy = 80;
     }
 }
