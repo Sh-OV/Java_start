@@ -1,6 +1,6 @@
 package org.example.units;
 
-public abstract class BaseHero {
+public abstract class BaseHero implements GameInterface {
     public String       name;           // Имя игрока-персонажа
     protected int       x, y;           // Координаты
     protected float     hp;             // Здоровье
@@ -21,10 +21,10 @@ public abstract class BaseHero {
         this.damage = damage;
         this.command = command;
     }
+
     @Override
     public String toString(){
         return name;
     }
-
 }
 
