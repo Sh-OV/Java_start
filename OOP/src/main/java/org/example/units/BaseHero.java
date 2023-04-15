@@ -1,5 +1,7 @@
 package org.example.units;
 
+import java.util.Random;
+
 public abstract class BaseHero implements GameInterface {
     public String       name;           // Имя игрока-персонажа
     protected int       x, y;           // Координаты
@@ -10,8 +12,8 @@ public abstract class BaseHero implements GameInterface {
     protected int[]     damage;         // минимальный и максимальный ущерб
 
 
-    public BaseHero(String name, int x, int y, float hp, int step, int attack, int def, int[] damage) {
-        this.name = name;
+    public BaseHero(int x, int y, float hp, int step, int attack, int def, int[] damage) {
+        this.name = getName();
         this.x = x;
         this.y = y;
         this.hp = hp;
@@ -20,7 +22,10 @@ public abstract class BaseHero implements GameInterface {
         this.def = def;
         this.damage = damage;
     }
+    private static String getName(){
 
+        return Names.values()[new Random().nextInt(Names.values().length)].toString();
+    }
     @Override
     public String toString(){
         return name;

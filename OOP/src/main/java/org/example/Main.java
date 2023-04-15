@@ -35,20 +35,17 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<BaseHero> hero = new ArrayList<>();
 
-        hero.add(new Magician("Маг, " + getName(), 1, 2));
-        hero.add(new Spearman("Копейщик, " + getName(), 1, 4));
-        hero.add(new Crossbowman("Арбалетчик, " + getName(), 1, 6));
-        hero.add(new Peasant("Крестьянин_1, " + getName(), 1, 8, true));
-        hero.add(new Monk("Монах, " + getName(), 20, 2));
-        hero.add(new Outlaw("Вор, " + getName(), 20, 4));
-        hero.add(new Sniper("Снайпер, " + getName(), 20, 6));
-        hero.add(new Peasant("Крестьянин_2, " + getName(), 20, 8, false));
+        hero.add(new Magician());
+        hero.add(new Spearman());
+        hero.add(new Crossbowman());
+        hero.add(new Peasant());
+        hero.add(new Monk());
+        hero.add(new Outlaw());
+        hero.add(new Sniper());
+        hero.add(new Peasant());
 
-        hero.forEach(n -> System.out.println(n.name));
+        hero.forEach(n -> System.out.println(n.getInfo()));
     }
 
-    private static String getName(){
 
-        return Names.values()[new Random().nextInt(Names.values().length)].toString();
-    }
 }
