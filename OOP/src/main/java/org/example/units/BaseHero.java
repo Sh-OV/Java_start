@@ -26,15 +26,5 @@ public abstract class BaseHero implements GameInterface {
     public String toString(){
         return name;
     }
-
-    @Override
-    public void step() {
-
-    }
-
-    @Override
-    public String getInfo() {
-        return null;
-    }
 }
 
