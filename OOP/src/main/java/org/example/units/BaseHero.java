@@ -3,9 +3,9 @@ package org.example.units;
 import java.util.Random;
 
 public abstract class BaseHero implements GameInterface {
-    public String       name;           // Имя игрока-персонажа
+    protected String       name;           // Имя игрока-персонажа
     protected int       x, y;           // Координаты
-    protected float     hp;             // Здоровье
+    protected float     hp, max_hp;             // Здоровье
     protected int       step,           // Шаг (количество клеток)
                         attack,         // Атака
                         def;            // Защита
@@ -17,6 +17,7 @@ public abstract class BaseHero implements GameInterface {
         this.x = x;
         this.y = y;
         this.hp = hp;
+        this.max_hp = hp;
         this.step = step;
         this.attack = attack;
         this.def = def;

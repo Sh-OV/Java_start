@@ -1,7 +1,7 @@
 package org.example.units;
 
 public abstract class Infantry extends BaseHero{
-    int gian;     // увеличение удара при разбеге
+    protected  int gian;     // увеличение удара при разбеге
     public Infantry(int x, int y, float hp, int step, int attack, int def, int[] damage,
                     int gian) {
         super(x, y, hp, step, attack, def, damage);
@@ -13,8 +13,4 @@ public abstract class Infantry extends BaseHero{
 
     }
 
-    @Override
-    public String getInfo() {
-        return null;
-    }
 }
