@@ -29,20 +29,26 @@ package org.example;
 import org.example.units.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<BaseHero> hero = new ArrayList<>();
 
-        hero.add(new Magician("Маг", 1, 2));
-        hero.add(new Spearman("Копейщик", 1, 4));
-        hero.add(new Crossbowman("Арбалетчик", 1, 6));
-        hero.add(new Peasant("Крестьянин_1", 1, 8, true));
-        hero.add(new Monk("Монах", 20, 2));
-        hero.add(new Outlaw("Вор", 20, 4));
-        hero.add(new Sniper("Снайпер", 20, 6));
-        hero.add(new Peasant("Крестьянин_2", 20, 8, false));
+        hero.add(new Magician("Маг, " + getName(), 1, 2));
+        hero.add(new Spearman("Копейщик, " + getName(), 1, 4));
+        hero.add(new Crossbowman("Арбалетчик, " + getName(), 1, 6));
+        hero.add(new Peasant("Крестьянин_1, " + getName(), 1, 8, true));
+        hero.add(new Monk("Монах, " + getName(), 20, 2));
+        hero.add(new Outlaw("Вор, " + getName(), 20, 4));
+        hero.add(new Sniper("Снайпер, " + getName(), 20, 6));
+        hero.add(new Peasant("Крестьянин_2, " + getName(), 20, 8, false));
 
         hero.forEach(n -> System.out.println(n));
+    }
+
+    private static String getName(){
+
+        return Names.values()[new Random().nextInt(Names.values().length)].toString();
     }
 }

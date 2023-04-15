@@ -15,4 +15,14 @@ public abstract class Shooter extends BaseHero {
     public void shoot(){
         System.out.println("Shoot!");
     }
+
+    @Override
+    public void step() {
+
+    }
+
+    @Override
+    public String getInfo() {
+        return null;
+    }
 }
