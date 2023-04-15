@@ -8,9 +8,9 @@ public abstract class BaseHero implements GameInterface {
                         attack,         // Атака
                         def;            // Защита
     protected int[]     damage;         // минимальный и максимальный ущерб
-    protected boolean   command;        // команда 1 или 2 (если 1 то true, 2 - false
 
-    public BaseHero(String name, int x, int y, float hp, int step, int attack, int def, int[] damage, boolean command) {
+
+    public BaseHero(String name, int x, int y, float hp, int step, int attack, int def, int[] damage) {
         this.name = name;
         this.x = x;
         this.y = y;
@@ -19,7 +19,6 @@ public abstract class BaseHero implements GameInterface {
         this.attack = attack;
         this.def = def;
         this.damage = damage;
-        this.command = command;
     }
 
     @Override
