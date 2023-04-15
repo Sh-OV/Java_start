@@ -44,7 +44,7 @@ public class Main {
         hero.add(new Sniper("Снайпер, " + getName(), 20, 6));
         hero.add(new Peasant("Крестьянин_2, " + getName(), 20, 8, false));
 
-        hero.forEach(n -> System.out.println(n));
+        hero.forEach(n -> System.out.println(n.name));
     }
 
     private static String getName(){
