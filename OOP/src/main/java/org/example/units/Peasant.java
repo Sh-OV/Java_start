@@ -1,9 +1,10 @@
 package org.example.units;
 
-public class Peasant extends BaseHero {
-    public Peasant() {
+import java.util.Random;
 
-        super(1,1, 50, 8, 5, 3, new int[]{15,30});
+public class Peasant extends BaseHero {
+    public Peasant(int team) {
+        super(1, 1, 50,8, 5, 3, new int[]{15,30}, team);
     }
 
     @Override
@@ -12,7 +13,6 @@ public class Peasant extends BaseHero {
     }
     @Override
     public String getInfo() {
-        return "Крестьянин" +
-                " - " + name;
+        return "Крестьянин - ";
     }
 }

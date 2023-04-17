@@ -4,12 +4,12 @@ public class Crossbowman extends Shooter {
 
 
     public Crossbowman() {
-        super(1, 1, 30, 3, 15, 6, new int[]{10, 20}, 10, 70);
+        super(1, 1, 30, 3, 15, 6, new int[]{10, 20}, 1, 10, 70);
 
     }
 
     @Override
     public String getInfo() {
-        return "Арбалетчик - " + name;
+        return "Арбалетчик - ";
     }
 }

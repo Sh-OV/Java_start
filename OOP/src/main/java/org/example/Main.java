@@ -32,11 +32,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
+    public static int num = 10;
     public static void main(String[] args) {
         ArrayList<BaseHero> hero_light  = new ArrayList<>();
         ArrayList<BaseHero> hero_darkness  = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < num; i++) {
             switch (new Random().nextInt(4)){
                 case 0: hero_light.add(new Magician());
                     break;
@@ -44,14 +45,12 @@ public class Main {
                     break;
                 case 2: hero_light.add(new Crossbowman());
                     break;
-                default: hero_light.add(new Peasant());
+                default: hero_light.add(new Peasant(1));
                 break;
              }
         }
-        hero_light.forEach(n -> System.out.println(n.getInfo()));
-        System.out.println("-".repeat(20));
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < num; i++) {
             switch (new Random().nextInt(4)){
                 case 0: hero_darkness.add(new Monk());
                     break;
@@ -59,10 +58,13 @@ public class Main {
                     break;
                 case 2: hero_darkness.add(new Sniper());
                     break;
-                default: hero_darkness.add(new Peasant());
+                default: hero_darkness.add(new Peasant(2));
                     break;
             }
         }
-        hero_darkness.forEach(n -> System.out.println(n.getInfo()));
+        hero_darkness.forEach(n -> System.out.println(n.getInfo() + n.toString()));
+        System.out.println("-".repeat(20));
+        System.out.println("-".repeat(20));
+        hero_light.forEach(n -> System.out.println(n.getInfo() + n.toString()));
     }
 }

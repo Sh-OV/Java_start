@@ -10,18 +10,20 @@ public abstract class BaseHero implements GameInterface {
                         attack,         // Атака
                         def;            // Защита
     protected int[]     damage;         // минимальный и максимальный ущерб
+    public static int team;
 
 
-    public BaseHero(int x, int y, float hp, int step, int attack, int def, int[] damage) {
+    public BaseHero(int x, int y, float hp, int step, int attack, int def, int[] damage, int team) {
         this.name = getName();
-        this.x = x;
-        this.y = y;
+        this.x = Coordinates.start_coord_X();
+        this.y = Coordinates.start_coord_Y();
         this.hp = hp;
         this.max_hp = hp;
         this.step = step;
         this.attack = attack;
         this.def = def;
         this.damage = damage;
+        this.team = team;
     }
     private static String getName(){
 
@@ -29,7 +31,7 @@ public abstract class BaseHero implements GameInterface {
     }
     @Override
     public String toString(){
-        return name;
+        return (name + " , " + x + " , " + y);
     }
 }
 
