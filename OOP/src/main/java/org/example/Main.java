@@ -33,9 +33,10 @@ import java.util.Random;
 
 public class Main {
     public static int num = 10;
+    public static ArrayList<BaseHero> hero_light  = new ArrayList<>();
+    public static ArrayList<BaseHero> hero_darkness  = new ArrayList<>();
+
     public static void main(String[] args) {
-        ArrayList<BaseHero> hero_light  = new ArrayList<>();
-        ArrayList<BaseHero> hero_darkness  = new ArrayList<>();
 
         for (int i = 0; i < num; i++) {
             switch (new Random().nextInt(4)){
@@ -62,9 +63,16 @@ public class Main {
                     break;
             }
         }
-        hero_darkness.forEach(n -> System.out.println(n.getInfo() + n.toString()));
+        hero_darkness.forEach(n -> System.out.println(n.toString()));
+        System.out.println("-".repeat(20));
+        hero_light.forEach(n -> System.out.println(n.toString()));
+
         System.out.println("-".repeat(20));
         System.out.println("-".repeat(20));
-        hero_light.forEach(n -> System.out.println(n.getInfo() + n.toString()));
+        System.out.println(hero_light);
+        System.out.println("-".repeat(20));
+        System.out.println(hero_darkness);
+
+
     }
 }

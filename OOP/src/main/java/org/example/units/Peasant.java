@@ -1,5 +1,6 @@
 package org.example.units;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Peasant extends BaseHero {
@@ -8,7 +9,7 @@ public class Peasant extends BaseHero {
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<BaseHero> enemy_team) {
 
     }
     @Override

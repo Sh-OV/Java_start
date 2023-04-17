@@ -15,7 +15,7 @@ public abstract class Mag extends BaseHero {
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<BaseHero> enemy_team) {
 
     }
 }

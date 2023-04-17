@@ -1,5 +1,7 @@
 package org.example.units;
 
+import java.util.ArrayList;
+
 public abstract class Infantry extends BaseHero{
     protected  int gian;     // увеличение удара при разбеге
     public Infantry(int x, int y, float hp, int step, int attack, int def, int[] damage, int team,
@@ -9,7 +11,7 @@ public abstract class Infantry extends BaseHero{
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<BaseHero> enemy_team) {
 
     }
 
