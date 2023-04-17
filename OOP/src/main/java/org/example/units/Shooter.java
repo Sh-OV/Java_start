@@ -19,9 +19,9 @@ public abstract class Shooter extends BaseHero {
     }
 
        @Override
-    public void step(ArrayList<BaseHero> enemy_team) {
+    public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
         if(hp <= 0 || arrows <= 0) return;
-        find_closest_enemy(enemy_team);
+        find_closest_enemy(enemy);
 
        }
 

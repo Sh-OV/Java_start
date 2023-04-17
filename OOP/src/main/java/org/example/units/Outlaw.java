@@ -1,5 +1,7 @@
 package org.example.units;
 
+import java.util.ArrayList;
+
 public class Outlaw extends Infantry {
 
 
@@ -11,4 +13,4 @@ public class Outlaw extends Infantry {
     public String getInfo() {
         return "Вор - ";
     }
-}
+    }

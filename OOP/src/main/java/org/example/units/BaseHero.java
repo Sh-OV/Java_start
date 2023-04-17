@@ -51,6 +51,5 @@ public abstract class BaseHero implements GameInterface {
         return closest_enemy;
     }
 
-    public abstract void step(ArrayList<BaseHero> enemy_team);
 }
 

@@ -11,7 +11,7 @@ public abstract class Infantry extends BaseHero{
     }
 
     @Override
-    public void step(ArrayList<BaseHero> enemy_team) {
+    public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
 
     }
 
