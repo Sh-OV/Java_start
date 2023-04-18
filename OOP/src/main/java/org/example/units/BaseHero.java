@@ -36,7 +36,7 @@ public abstract class BaseHero implements GameInterface {
         return (getInfo() + name + " , " + x + " , " + y);
     }
 
-    protected BaseHero find_closest_enemy(ArrayList<BaseHero> enemy_team){
+   public BaseHero find_closest_enemy(ArrayList<BaseHero> enemy_team){
         BaseHero closest_enemy = enemy_team.get(0);
         double distance = Math.sqrt(Math.pow(enemy_team.get(0).x - this.x, 2) + Math.pow(enemy_team.get(0).y - this.y, 2));
         double min_distance = distance;
@@ -49,6 +49,26 @@ public abstract class BaseHero implements GameInterface {
             }
         }
         return closest_enemy;
+    }
+
+    protected BaseHero search_ally_hp(ArrayList<BaseHero> search_ally){
+        BaseHero ally = search_ally.get(0);
+        for (BaseHero friend : search_ally) {
+            if(friend.hp <= 0){
+                ally = friend;
+            }
+        }
+        return ally;
+    }
+
+    protected boolean search_ally_peasant(ArrayList<BaseHero> search_ally){
+        boolean existence = false;
+        for (BaseHero friend : search_ally) {
+            if(friend.getInfo() == "Крестьянин - " && friend.hp > 0){
+                existence = true;
+            }
+        }
+        return existence;
     }
 
 }
