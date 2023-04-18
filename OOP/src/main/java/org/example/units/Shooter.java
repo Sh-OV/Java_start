@@ -22,7 +22,6 @@ public abstract class Shooter extends BaseHero {
     public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
         if(hp <= 0 || arrows <= 0) return;
         find_closest_enemy(enemy);
-
+        arrows = maxArrows - this.arrows;
        }
-
 }

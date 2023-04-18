@@ -51,5 +51,25 @@ public abstract class BaseHero implements GameInterface {
         return closest_enemy;
     }
 
+    protected BaseHero search_ally_hp(ArrayList<BaseHero> search_ally){
+        BaseHero ally = search_ally.get(0);
+        for (BaseHero friend : search_ally) {
+            if(friend.hp <= 0){
+                ally = friend;
+            }
+        }
+        return ally;
+    }
+
+    protected boolean search_ally_peasant(ArrayList<BaseHero> search_ally){
+        boolean existence = false;
+        for (BaseHero friend : search_ally) {
+            if(friend.getInfo() == "Крестьянин - " && friend.hp > 0){
+                existence = true;
+            }
+        }
+        return existence;
+    }
+
 }
 
