@@ -1,11 +1,11 @@
 package org.example.units;
 
 import java.util.ArrayList;
-import java.util.Random;
+
 
 public class Peasant extends BaseHero {
     public Peasant(int team) {
-        super(50,8, 5, 3, new int[]{15,30}, team);
+        super(2, 50,8, 5, 3, new int[]{15,30}, team);
     }
 
     @Override

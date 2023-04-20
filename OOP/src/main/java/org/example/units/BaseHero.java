@@ -5,22 +5,22 @@ import java.util.Random;
 
 
 public abstract class BaseHero implements GameInterface {
-    protected static int count;
     protected static int start_coord_x1 = 0;
     protected static int start_coord_y1;
     protected static int start_coord_x2 = 9;
     protected static int start_coord_y2;
 
-    protected String       name;           // Имя игрока-персонажа
+    protected String       name;        // Имя игрока-персонажа
     protected int       x, y;           // Координаты
-    protected float     hp, max_hp;             // Здоровье
+    protected int initiative;           // Инициатива
+    protected float     hp, max_hp;     // Здоровье
     protected int       step,           // Шаг (количество клеток)
                         attack,         // Атака
                         def;            // Защита
     protected int[]     damage;         // минимальный и максимальный ущерб
     public static int team;
 
-    public BaseHero(float hp, int step, int attack, int def, int[] damage, int team) {
+    public BaseHero(int initiative, float hp, int step, int attack, int def, int[] damage, int team) {
         this.name = getName();
         if(team == 1){
             this.x = start_coord_x1;
@@ -30,6 +30,7 @@ public abstract class BaseHero implements GameInterface {
             this.x = start_coord_x2;
             this.y = start_coord_y2++;
         }
+        this.initiative = initiative;
         this.hp = hp;
         this.max_hp = hp;
         this.step = step;
@@ -62,25 +63,9 @@ public abstract class BaseHero implements GameInterface {
         return closest_enemy;
     }
 
-    protected BaseHero search_ally_hp(ArrayList<BaseHero> search_ally){
-        BaseHero ally = search_ally.get(0);
-        for (BaseHero friend : search_ally) {
-            if(friend.hp <= 0){
-                ally = friend;
-            }
-        }
-        return ally;
-    }
 
-    protected boolean search_ally_peasant(ArrayList<BaseHero> search_ally){
-        boolean existence = false;
-        for (BaseHero friend : search_ally) {
-            if(friend.getInfo() == "Крестьянин - " && friend.hp > 0){
-                existence = true;
-            }
-        }
-        return existence;
-    }
+
+
 
 }
 

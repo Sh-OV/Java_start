@@ -67,7 +67,7 @@ public class Main {
         System.out.println("-".repeat(20));
         hero_light.forEach(n -> System.out.println(n.toString()));
         System.out.println("-".repeat(20));
-        System.out.println(hero_darkness.get(0).find_closest_enemy(hero_light));
+        System.out.println(hero_darkness.get(5).find_closest_enemy(hero_light));
 
     }
 }
