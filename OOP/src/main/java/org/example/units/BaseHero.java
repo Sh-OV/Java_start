@@ -5,6 +5,12 @@ import java.util.Random;
 
 
 public abstract class BaseHero implements GameInterface {
+    protected static int count;
+    protected static int start_coord_x1 = 0;
+    protected static int start_coord_y1;
+    protected static int start_coord_x2 = 9;
+    protected static int start_coord_y2;
+
     protected String       name;           // Имя игрока-персонажа
     protected int       x, y;           // Координаты
     protected float     hp, max_hp;             // Здоровье
@@ -13,12 +19,17 @@ public abstract class BaseHero implements GameInterface {
                         def;            // Защита
     protected int[]     damage;         // минимальный и максимальный ущерб
     public static int team;
-    Coordinates coordinates = new Coordinates();
 
-    public BaseHero(int x, int y, float hp, int step, int attack, int def, int[] damage, int team) {
+    public BaseHero(float hp, int step, int attack, int def, int[] damage, int team) {
         this.name = getName();
-        this.x = coordinates.start_coord_X();
-        this.y = coordinates.start_coord_Y();
+        if(team == 1){
+            this.x = start_coord_x1;
+            this.y = start_coord_y1++;
+        }
+        else if(team == 2){
+            this.x = start_coord_x2;
+            this.y = start_coord_y2++;
+        }
         this.hp = hp;
         this.max_hp = hp;
         this.step = step;
