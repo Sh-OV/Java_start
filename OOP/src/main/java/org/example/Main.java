@@ -64,10 +64,11 @@ public class Main {
             }
         }
         hero_darkness.forEach(n -> System.out.println(n.toString()));
-        System.out.println("-".repeat(20));
+        System.out.println("-".repeat(30));
         hero_light.forEach(n -> System.out.println(n.toString()));
-        System.out.println("-".repeat(20));
+        System.out.println("-".repeat(30));
         System.out.println(hero_darkness.get(0).find_closest_enemy(hero_light));
+        System.out.println("-".repeat(30));
 
     }
 }
