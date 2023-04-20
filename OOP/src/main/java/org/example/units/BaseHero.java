@@ -13,12 +13,12 @@ public abstract class BaseHero implements GameInterface {
                         def;            // Защита
     protected int[]     damage;         // минимальный и максимальный ущерб
     public static int team;
-
+    Coordinates coordinates = new Coordinates();
 
     public BaseHero(int x, int y, float hp, int step, int attack, int def, int[] damage, int team) {
         this.name = getName();
-        this.x = Coordinates.start_coord_X();
-        this.y = Coordinates.start_coord_Y();
+        this.x = coordinates.start_coord_X();
+        this.y = coordinates.start_coord_Y();
         this.hp = hp;
         this.max_hp = hp;
         this.step = step;
