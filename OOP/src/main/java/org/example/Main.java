@@ -104,7 +104,10 @@ public class Main {
         PriorityQueue<BaseHero> sortedList = new PriorityQueue<>(new Comparator<BaseHero>() {
             @Override
             public int compare(BaseHero o1, BaseHero o2) {
-                if (o1.initiative == o2.initiative) return o1.getHp() - o2.getHp();
+                if (o1.initiative == o2.initiative){
+                    if (o1.getHp() > o2.getHp()) return -1;
+                    else return 1;
+                }
                 return o2.initiative - o1.initiative;
             }
         });

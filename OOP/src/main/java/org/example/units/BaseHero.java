@@ -69,7 +69,7 @@ public abstract class BaseHero implements GameInterface {
    }
 
    public void accessing_hp_enemy(BaseHero pers) {  // метод обращения к параметрам противника и изменение их
-       pers.hp -= this.attack;
+       pers.hp -= this.attack - pers.def;
    }
 
    public void accessing_stat_ally(BaseHero pers, String[] arr, int n) {   // изменение статуса у персонажа

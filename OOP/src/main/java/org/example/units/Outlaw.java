@@ -7,7 +7,7 @@ public class Outlaw extends Infantry {
 
     public Outlaw() {
 
-        super(8, 40, 6, 18, 8, new int[]{8,12}, 2, "stand",30);
+        super(8, 40, 6, 20, 8, new int[]{8,12}, 2, "stand",30);
     }
     @Override
     public String getInfo() {
