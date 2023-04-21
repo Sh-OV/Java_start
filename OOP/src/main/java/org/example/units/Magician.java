@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Magician extends Mag {
 
     public Magician() {
-        super(5, 80, 4, 20, 10, new int[]{5, 10}, 1, 70, new HashMap<>());
+        super(5, 80, 4, 20, 10, new int[]{5, 10}, 1, new String[]{"stand", "dead", "busy"}, 70, new HashMap<>());
 
     }
 
