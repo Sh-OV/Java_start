@@ -11,7 +11,6 @@ public abstract class BaseHero implements GameInterface {
     protected static int start_coord_y1;
     protected static int start_coord_x2 = Main.num-1;
     protected static int start_coord_y2;
-    public static String[] status = new String[]{"stand", "dead", "busy", "hid"};
     protected String       name;        // Имя игрока-персонажа
     protected int       x, y;           // Координаты
     public int initiative;           // Инициатива
