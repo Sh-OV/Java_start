@@ -7,7 +7,7 @@ public abstract class Mag extends BaseHero {
     protected int manna;
     protected String[] book_spells;
 
-    public Mag(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String[] stat,
+    public Mag(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String stat,
                int manna, String[] book_spells) {
         super(initiative, hp, step, attack, def, damage, team, stat);
         this.manna = manna;
@@ -26,4 +26,8 @@ public abstract class Mag extends BaseHero {
     public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
 
     }
+    public void accessing_hp_ally(BaseHero pers, int ratio){                // метод для лечения / воскрешения
+        pers.hp *= ratio;
+    }
+
 }

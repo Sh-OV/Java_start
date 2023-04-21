@@ -11,7 +11,7 @@ public abstract class BaseHero implements GameInterface {
     protected static int start_coord_y1;
     protected static int start_coord_x2 = Main.num-1;
     protected static int start_coord_y2;
-
+    public static String[] status = new String[]{"stand", "dead", "busy", "hid"};
     protected String       name;        // Имя игрока-персонажа
     protected int       x, y;           // Координаты
     public int initiative;           // Инициатива
@@ -21,9 +21,9 @@ public abstract class BaseHero implements GameInterface {
                         def;            // Защита
     protected int[]     damage;         // минимальный и максимальный ущерб
     public int team;                    // к какой команде относится
-    protected String[] stat;            // состояние в бою (стоит, мертв, занят) + спрятался - для разбойников
+    protected String stat = "stand";            // состояние в бою (стоит, мертв, занят) + спрятался - для разбойников
 
-    public BaseHero(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String[] stat) {
+    public BaseHero(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String stat) {
         this.name = getName();
         if(team == 1){
             this.x = start_coord_x1;
@@ -48,7 +48,7 @@ public abstract class BaseHero implements GameInterface {
     }
     @Override
     public String toString(){
-        return (getInfo() + name + " , " + x + " , " + y + ", init = " + initiative + ", hp = " + getHp());
+        return (getInfo() + name + " , " + x + " , " + y + ", init = " + initiative + ", hp = " + getHp() + ", stat: " + stat);
     }
 
    public BaseHero find_closest_enemy(ArrayList<BaseHero> enemy_team){      // метод поиска ближайшего противника
@@ -64,14 +64,31 @@ public abstract class BaseHero implements GameInterface {
             }
         }
         return closest_enemy;
-    }
-
-    public int getHp(){                             // метод получения остатка здоровья персонажа
+   }
+   public int getHp(){                             // метод получения остатка здоровья персонажа
         return (int) ((float) this.hp / (float) this.max_hp * 100);
-    }
+   }
 
+   public void accessing_hp_enemy(BaseHero pers) {  // метод обращения к параметрам противника и изменение их
+       pers.hp -= this.attack;
+   }
 
+   public void accessing_stat_ally(BaseHero pers, String[] arr, int n) {   // изменение статуса у персонажа
+       pers.stat = arr[n];
+   }
 
+   public void accessing_hp_ally(BaseHero pers, int ratio){                // метод для лечения / воскрешения
+        pers.hp *= ratio;
+   }
 
 }
+/*
+Для лучников требуются методы:
+1. поиск соперника
+2. нанести удар по противнику
+3. обращение к параметрам противника и изменение их
+4. Поиск крестьянина
+5. обращение к параметрам союзника
+
+ */
 

@@ -7,7 +7,7 @@ public abstract class Shooter extends BaseHero {
                    maxArrows,          // количество стрел максимально в начале боя
                    accuracy;           // точность
 
-    public Shooter(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String[] stat,
+    public Shooter(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String stat,
                    int arrows, int accuracy) {
         super(initiative, hp, step, attack, def, damage, team, stat);
         this.arrows = arrows;
@@ -32,4 +32,9 @@ public abstract class Shooter extends BaseHero {
         find_closest_enemy(enemy);
         arrows = maxArrows - this.arrows;
        }
+
+    public void accessing_stat_ally(BaseHero pers, String[] arr, int n) {   // изменение статуса у персонажа
+        pers.stat = arr[n];
+    }
+
 }

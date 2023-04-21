@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Peasant extends BaseHero {
     public Peasant(int team) {
-        super(2, 50,8, 5, 3, new int[]{15,30}, team, new String[]{"stand", "dead", "busy"});
+        super(2, 50,8, 5, 3, new int[]{15,30}, team, "stand");
     }
 
     @Override

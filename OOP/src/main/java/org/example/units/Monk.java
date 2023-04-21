@@ -7,7 +7,7 @@ public class Monk extends Mag {
 
     public Monk() {
 
-        super(5, 70, 4, 20, 10, new int[]{5,10}, 2,  new String[]{"stand", "dead", "busy"},
+        super(5, 70, 4, 20, 10, new int[]{5,10}, 2,  "stand",
               80, new String[]{"lightning", "slowly", "speed", "resurrect", "shield"});
     }
     @Override

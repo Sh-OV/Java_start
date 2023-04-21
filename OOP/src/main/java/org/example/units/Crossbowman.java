@@ -4,7 +4,7 @@ public class Crossbowman extends Shooter {
 
 
     public Crossbowman() {
-        super(10, 30, 3, 15, 6, new int[]{10, 20}, 1, new String[]{"stand", "dead", "busy"}, 10, 70);
+        super(10, 30, 3, 15, 6, new int[]{10, 20}, 1, "stand", 10, 70);
 
     }
 
