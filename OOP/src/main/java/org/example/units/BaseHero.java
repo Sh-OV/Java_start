@@ -80,15 +80,6 @@ public abstract class BaseHero implements GameInterface {
    public void accessing_hp_ally(BaseHero pers, int ratio){                // метод для лечения / воскрешения
         pers.hp *= ratio;
    }
-
 }
-/*
-Для лучников требуются методы:
-1. поиск соперника
-2. нанести удар по противнику
-3. обращение к параметрам противника и изменение их
-4. Поиск крестьянина
-5. обращение к параметрам союзника
 
- */
 

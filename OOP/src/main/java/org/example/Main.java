@@ -49,15 +49,18 @@ public class Main {
         hero_light.forEach(n -> System.out.println(n.toString()));
 
         System.out.println("-".repeat(30));
-        hero_darkness.get(5).accessing_stat_ally(hero_darkness.get(5).find_closest_enemy(hero_light), BaseHero.status,2);
-        System.out.println(hero_darkness.get(5).find_closest_enemy(hero_light));
-
+        for (BaseHero hero:hero_darkness) {
+            hero.step(hero_light,hero_darkness);
+        }
+        for (BaseHero hero:hero_light) {
+            hero.step(hero_darkness, hero_light);
+        }
         System.out.println("-".repeat(30));
 
- //       System.out.println("\n------Очередность ходов:------");
-//        while (!sorted_hero.isEmpty()) {
- ///           System.out.println(sorted_hero.poll().toString());
- //       }
+        System.out.println("\n------Очередность ходов:------");
+        while (!sorted_hero.isEmpty()) {
+            System.out.println(sorted_hero.poll().toString());
+        }
     }
     public static ArrayList<BaseHero> team_1(ArrayList<BaseHero> hero){
         for (int i = 0; i < num; i++) {
