@@ -1,9 +1,13 @@
 package org.example.units;
 
 public enum SpellBook {
-    healOne(1, -1), healFive(2, -5), healTen(3, -10),
-    damageOne(1, 1), damageFive(5, 2), damageTen(10, 3),
-    ressurect(25, Float.NaN);
+    lightning(10, -4),
+    slowly(4, -0.5f),
+    speed(4, 0.5f),
+    ressurect(25, Float.NaN),
+    heal(20, 0.3f),
+    shield(10, 4);
+//    damageOne(1, 1), damageFive(5, 2), damageTen(10, 3);
 
     private final float cost, power;
 

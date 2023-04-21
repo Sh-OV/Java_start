@@ -35,44 +35,11 @@ import java.util.Random;
 
 public class Main {
     public static int num = 10;
-    public static ArrayList<BaseHero> hero_light = new ArrayList<>();
-    public static ArrayList<BaseHero> hero_darkness = new ArrayList<>();
+    public static ArrayList<BaseHero> hero_light = team_1(new ArrayList<>());
+    public static ArrayList<BaseHero> hero_darkness = team_2(new ArrayList<>());
 
     public static void main(String[] args) {
 
-        for (int i = 0; i < num; i++) {
-            switch (new Random().nextInt(4)) {
-                case 0:
-                    hero_light.add(new Magician());
-                    break;
-                case 1:
-                    hero_light.add(new Spearman());
-                    break;
-                case 2:
-                    hero_light.add(new Crossbowman());
-                    break;
-                default:
-                    hero_light.add(new Peasant(1));
-                    break;
-            }
-        }
-
-        for (int i = 0; i < num; i++) {
-            switch (new Random().nextInt(4)) {
-                case 0:
-                    hero_darkness.add(new Monk());
-                    break;
-                case 1:
-                    hero_darkness.add(new Outlaw());
-                    break;
-                case 2:
-                    hero_darkness.add(new Sniper());
-                    break;
-                default:
-                    hero_darkness.add(new Peasant(2));
-                    break;
-            }
-        }
         PriorityQueue<BaseHero> sorted_hero = getSortedList();
 
         System.out.println("\n------Команда hero_darkness:------");
@@ -90,7 +57,44 @@ public class Main {
             System.out.println(sorted_hero.poll().toString());
         }
     }
-
+    public static ArrayList<BaseHero> team_1(ArrayList<BaseHero> hero){
+        for (int i = 0; i < num; i++) {
+            switch (new Random().nextInt(4)) {
+                case 0:
+                    hero.add(new Magician());
+                    break;
+                case 1:
+                    hero.add(new Spearman());
+                    break;
+                case 2:
+                    hero.add(new Crossbowman());
+                    break;
+                default:
+                    hero.add(new Peasant(1));
+                    break;
+            }
+        }
+        return hero;
+    }
+    public static ArrayList<BaseHero> team_2(ArrayList<BaseHero> hero){
+        for (int i = 0; i < num; i++) {
+            switch (new Random().nextInt(4)) {
+                case 0:
+                    hero.add(new Monk());
+                    break;
+                case 1:
+                    hero.add(new Outlaw());
+                    break;
+                case 2:
+                    hero.add(new Sniper());
+                    break;
+                default:
+                    hero.add(new Peasant(2));
+                    break;
+            }
+        }
+        return hero;
+    }
     public static PriorityQueue<BaseHero> getSortedList() {
         PriorityQueue<BaseHero> sortedList = new PriorityQueue<>(new Comparator<BaseHero>() {
             @Override

@@ -1,5 +1,7 @@
 package org.example.units;
 
+import org.example.Main;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,7 +9,7 @@ import java.util.Random;
 public abstract class BaseHero implements GameInterface {
     protected static int start_coord_x1 = 0;
     protected static int start_coord_y1;
-    protected static int start_coord_x2 = 9;
+    protected static int start_coord_x2 = Main.num-1;
     protected static int start_coord_y2;
 
     protected String       name;        // Имя игрока-персонажа
@@ -18,8 +20,8 @@ public abstract class BaseHero implements GameInterface {
                         attack,         // Атака
                         def;            // Защита
     protected int[]     damage;         // минимальный и максимальный ущерб
-    public int team;
-    protected String[] stat;
+    public int team;                    // к какой команде относится
+    protected String[] stat;            // состояние в бою (стоит, мертв, занят) + спрятался - для разбойников
 
     public BaseHero(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String[] stat) {
         this.name = getName();
@@ -64,7 +66,7 @@ public abstract class BaseHero implements GameInterface {
         return closest_enemy;
     }
 
-    public int getHp(){                             // метод получения остатка здоровья перстонажа
+    public int getHp(){                             // метод получения остатка здоровья персонажа
         return (int) ((float) this.hp / (float) this.max_hp * 100);
     }
 

@@ -31,11 +31,11 @@
 N  Name-hero  init  hp  step  attack  def  damage  comm  arrows  accuracy  manna gain%
 1     Маг      5    80   4     20     10    5-10   true                     70            Magician
 2    Монах     5    70   4     20     10    5-10   false                    80            Monk
-3   Копейщик   8    45   6     18     6     8-12   true                            20     Spearman
-4  Разбойник   8    40   6     18     8     8-12   false                           20     Outlaw
-5 Арбалетчик   10   30   3     15     6    10-20   true    10      70                     Crossbowman
-6   Снайпер    10   35   3     15     5    10-20  false     9      80                     Sniper
-7 Крестьянин   2    50   8      5     3    15-30 true/false                               Peasant
+3   Копейщик   8    45   6     18     6     10-20   true                            20     Spearman
+4  Разбойник   8    40   6     18     8     10-20   false                           20     Outlaw
+5 Арбалетчик   10   30   3     15     6    8-12   true    10      70                     Crossbowman
+6   Снайпер    10   35   3     15     5    8-12  false     9      80                     Sniper
+7 Крестьянин   2    50   8      5     1    1-2   true/false                               Peasant
 
 
 
@@ -43,11 +43,12 @@ N  Name-hero  init  hp  step  attack  def  damage  comm  arrows  accuracy  manna
      Книга магии
 
 N    spells       manna
-1   lightning      10
-2   slowly          4
-3   speed           4
-4   resurrect      15
-5   heal           14
+1   lightning      10       молния
+2   slowly          4       замедление
+3   speed           4       ускорение
+4   resurrect      25       воскрешение
+5   heal           20       исцеление
+6   shield         6        щит на себя
 
 
 
