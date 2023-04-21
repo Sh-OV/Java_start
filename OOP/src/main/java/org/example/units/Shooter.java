@@ -15,17 +15,15 @@ public abstract class Shooter extends BaseHero {
         this.accuracy = accuracy;
     }
     protected boolean search_ally_peasant(ArrayList<BaseHero> search_ally){     // поиск крестьянина
-        boolean existence = false;
         for (BaseHero friend : search_ally) {
             if(friend.getInfo() == "Крестьянин - " &&
                friend.hp > 0 &&
                friend.stat == "stand"){
                 friend.stat = "busy";
-                existence = true;
-                return existence;
+                return true;
             }
         }
-        return existence;
+        return false;
     }
        @Override
     public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
