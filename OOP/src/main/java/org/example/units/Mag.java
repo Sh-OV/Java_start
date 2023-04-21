@@ -7,9 +7,9 @@ public abstract class Mag extends BaseHero {
     protected int manna;
     protected HashMap<String, ArrayList<String>> book_spells;
 
-    public Mag(int initiative, float hp, int step, int attack, int def, int[] damage, int team,
+    public Mag(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String[] stat,
                int manna, HashMap<String, ArrayList<String>> book_spells) {
-        super(initiative, hp, step, attack, def, damage, team);
+        super(initiative, hp, step, attack, def, damage, team, stat);
         this.manna = manna;
         this.book_spells = book_spells;
     }

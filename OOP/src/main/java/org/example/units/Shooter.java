@@ -7,9 +7,9 @@ public abstract class Shooter extends BaseHero {
                    maxArrows,          // количество стрел максимально в начале боя
                    accuracy;           // точность
 
-    public Shooter(int initiative, float hp, int step, int attack, int def, int[] damage, int team,
+    public Shooter(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String[] stat,
                    int arrows, int accuracy) {
-        super(initiative, hp, step, attack, def, damage, team);
+        super(initiative, hp, step, attack, def, damage, team, stat);
         this.arrows = arrows;
         maxArrows = arrows;
         this.accuracy = accuracy;

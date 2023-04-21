@@ -12,15 +12,16 @@ public abstract class BaseHero implements GameInterface {
 
     protected String       name;        // Имя игрока-персонажа
     protected int       x, y;           // Координаты
-    protected int initiative;           // Инициатива
+    public int initiative;           // Инициатива
     protected float     hp, max_hp;     // Здоровье
     protected int       step,           // Шаг (количество клеток)
                         attack,         // Атака
                         def;            // Защита
     protected int[]     damage;         // минимальный и максимальный ущерб
-    public static int team;
+    public int team;
+    protected String[] stat;
 
-    public BaseHero(int initiative, float hp, int step, int attack, int def, int[] damage, int team) {
+    public BaseHero(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String[] stat) {
         this.name = getName();
         if(team == 1){
             this.x = start_coord_x1;
@@ -38,17 +39,17 @@ public abstract class BaseHero implements GameInterface {
         this.def = def;
         this.damage = damage;
         this.team = team;
+        this.stat = stat;
     }
-    private static String getName(){
-
+    private static String getName(){        // метод случайного заполнения именами перснажей
         return Names.values()[new Random().nextInt(Names.values().length)].toString();
     }
     @Override
     public String toString(){
-        return (getInfo() + name + " , " + x + " , " + y);
+        return (getInfo() + name + " , " + x + " , " + y + ", init = " + initiative + ", hp = " + getHp());
     }
 
-   public BaseHero find_closest_enemy(ArrayList<BaseHero> enemy_team){
+   public BaseHero find_closest_enemy(ArrayList<BaseHero> enemy_team){      // метод поиска ближайшего противника
         BaseHero closest_enemy = enemy_team.get(0);
         double distance = Math.sqrt(Math.pow(enemy_team.get(0).x - this.x, 2) + Math.pow(enemy_team.get(0).y - this.y, 2));
         double min_distance = distance;
@@ -63,6 +64,9 @@ public abstract class BaseHero implements GameInterface {
         return closest_enemy;
     }
 
+    public int getHp(){                             // метод получения остатка здоровья перстонажа
+        return (int) ((float) this.hp / (float) this.max_hp * 100);
+    }
 
 
 
