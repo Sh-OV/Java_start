@@ -12,6 +12,6 @@ public class Monk extends Mag {
     }
     @Override
     public String getInfo() {
-        return "Монах - ";
+        return "Волшебник - ";
     }
 }

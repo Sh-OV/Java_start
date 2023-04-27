@@ -56,13 +56,13 @@ int index = 0;
         }
  */
 
-   public int find_closest_enemy(ArrayList<BaseHero> enemy_team){      // метод поиска ближайшего противника
+   public int find_closest(ArrayList<BaseHero> hero){      // метод поиска ближайшего противника
        int index = 0;
        double min = Double.MAX_VALUE;
-       for (int i = 0; i < enemy_team.size(); i++) {
-           if(min > coords.getDistance(enemy_team.get(i).coords) && enemy_team.get(i).hp > 0) {
+       for (int i = 0; i < hero.size(); i++) {
+           if(min > coords.getDistance(hero.get(i).coords) && hero.get(i).hp > 0) {
                index = i;
-               min = coords.getDistance(enemy_team.get(i).coords);
+               min = coords.getDistance(hero.get(i).coords);
            }
        }
        return index;
@@ -75,9 +75,9 @@ int index = 0;
        pers.hp -= this.attack - pers.def;
    }
 
-   public void accessing_stat_ally(BaseHero pers, String[] arr, int n) {   // изменение статуса у персонажа
-       pers.condition = arr[n];
-   }
+//   public void accessing_stat_ally(BaseHero pers, String[] arr, int n) {   // изменение статуса у персонажа
+  //     pers.condition = arr[n];
+//   }
 
    public void accessing_hp_ally(BaseHero pers, int ratio){                // метод для лечения / воскрешения
         pers.hp *= ratio;

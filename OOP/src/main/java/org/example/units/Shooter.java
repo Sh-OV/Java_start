@@ -16,10 +16,10 @@ public abstract class Shooter extends BaseHero {
     }
     protected boolean search_ally_peasant(ArrayList<BaseHero> search_ally){     // поиск крестьянина
         for (BaseHero friend : search_ally) {
-            if(friend.getInfo() == "Крестьянин - " &&
+            if(friend.getInfo() == "Фермер - " &&
                friend.hp > 0 &&
-               friend.condition == "stand"){
-                friend.condition = "busy";
+               friend.condition == "Stand"){
+                friend.condition = "Busy";
                 return true;
             }
         }
@@ -28,14 +28,14 @@ public abstract class Shooter extends BaseHero {
        @Override
     public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
         if(hp <= 0){
-            this.condition = "dead";
+            this.condition = "Dead";
             return;
         }
         else if (arrows <= 0){
-            this.condition = "empty";
+            this.condition = "Empty";
             return;
         }
-        BaseHero enemy_pers = ally.get(find_closest_enemy(enemy));
+        BaseHero enemy_pers = ally.get(find_closest(enemy));
         accessing_hp_enemy(enemy_pers);
         if (!search_ally_peasant(ally)) {
                arrows = maxArrows - 1;
