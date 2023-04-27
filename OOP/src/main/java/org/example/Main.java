@@ -28,21 +28,30 @@ package org.example;
 
 import org.example.units.*;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
-    public static int num = 10;
-    public static ArrayList<BaseHero> hero_light = team_1(new ArrayList<>());
-    public static ArrayList<BaseHero> hero_darkness = team_2(new ArrayList<>());
-
+    public static int UNITS = 10;
+    public static ArrayList<BaseHero> hero_light = new ArrayList<>();
+    public static ArrayList<BaseHero> hero_darkness = new ArrayList<>();
+    public static ArrayList<BaseHero> sorted_hero = new ArrayList<>();
     public static void main(String[] args) {
+        team_1(hero_light);
+        team_2(hero_darkness);
 
-        PriorityQueue<BaseHero> sorted_hero = getSortedList();
 
-        System.out.println("\n------Команда hero_darkness:------");
+        Scanner input = new Scanner(System.in);
+        while (true){
+            sorted_hero =  getSortedList();
+            View.view();  // отображение в консоль
+            input.nextLine();
+            for (BaseHero human: sorted_hero) {
+                if (hero_light.contains(human)) human.step(hero_light, hero_darkness);
+                else human.step(hero_darkness, hero_light);
+            }
+        }
+
+/*        System.out.println("\n------Команда hero_darkness:------");
         hero_darkness.forEach(n -> System.out.println(n.toString()));
 
         System.out.println("\n------Команда hero_light:------");
@@ -58,61 +67,58 @@ public class Main {
         System.out.println("-".repeat(30));
 
         System.out.println("\n------Очередность ходов:------");
-        while (!sorted_hero.isEmpty()) {
-            System.out.println(sorted_hero.poll().toString());
+        sorted_hero.forEach(n -> System.out.println(n.toString()));*/
         }
-    }
     public static ArrayList<BaseHero> team_1(ArrayList<BaseHero> hero){
-        for (int i = 0; i < num; i++) {
+        for (int i = 0; i < UNITS; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
-                    hero.add(new Magician());
+                    hero.add(new Magician(new Vector2D(i+1, 1)));
                     break;
                 case 1:
-                    hero.add(new Spearman());
+                    hero.add(new Spearman(new Vector2D(i+1, 1)));
                     break;
                 case 2:
-                    hero.add(new Crossbowman());
+                    hero.add(new Crossbowman(new Vector2D(i+1, 1)));
                     break;
                 default:
-                    hero.add(new Peasant(1));
+                    hero.add(new Peasant(new Vector2D(i+1, 1), 1));
                     break;
             }
         }
         return hero;
     }
     public static ArrayList<BaseHero> team_2(ArrayList<BaseHero> hero){
-        for (int i = 0; i < num; i++) {
+        for (int i = 0; i < UNITS; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
-                    hero.add(new Monk());
+                    hero.add(new Monk(new Vector2D(i+1, UNITS)));
                     break;
                 case 1:
-                    hero.add(new Outlaw());
+                    hero.add(new Outlaw(new Vector2D(i+1, UNITS)));
                     break;
                 case 2:
-                    hero.add(new Sniper());
+                    hero.add(new Sniper(new Vector2D(i+1, UNITS)));
                     break;
                 default:
-                    hero.add(new Peasant(2));
+                    hero.add(new Peasant(new Vector2D(i+1, UNITS), 2));
                     break;
             }
         }
         return hero;
     }
-    public static PriorityQueue<BaseHero> getSortedList() {
-        PriorityQueue<BaseHero> sortedList = new PriorityQueue<>(new Comparator<BaseHero>() {
-            @Override
-            public int compare(BaseHero o1, BaseHero o2) {
-                if (o1.initiative == o2.initiative){
-                    if (o1.getHp() > o2.getHp()) return -1;
-                    else return 1;
-                }
-                return o2.initiative - o1.initiative;
-            }
-        });
+    public static ArrayList<BaseHero> getSortedList() {
+        ArrayList<BaseHero> sortedList = new ArrayList<>();
         sortedList.addAll(hero_light);
         sortedList.addAll(hero_darkness);
+        sortedList.sort(new Comparator<BaseHero>() {
+            @Override
+            public int compare(BaseHero t0, BaseHero t1) {
+                if (t1.initiative == t0.initiative) return (int) (t1.getHp() - t0.getHp());
+                else  return (int) (t1.initiative - t0.initiative);
+            }
+        });
+
         return sortedList;
     }
 }

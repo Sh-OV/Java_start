@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public abstract class Infantry extends BaseHero{
     protected  int gian;     // увеличение удара при разбеге
-    public Infantry(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String stat,
+    public Infantry(int initiative, float hp, int step, int attack, int def, int damageMin, int damageMax, int team, int posX, int posY,
                     int gian) {
-        super(initiative, hp, step, attack, def, damage, team, stat);
+        super(initiative, hp, step, attack, def, damageMin, damageMax, team, posX, posY);
         this.gian = gian;
     }
 

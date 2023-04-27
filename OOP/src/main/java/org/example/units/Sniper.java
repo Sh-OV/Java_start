@@ -1,8 +1,8 @@
 package org.example.units;
 
 public class Sniper extends Shooter {
-      public Sniper() {
-        super(10, 35, 3, 15, 5, new int[]{10, 20}, 2, "stand",9, 80);
+      public Sniper(Vector2D coords) {
+        super(10, 35, 3, 15, 5, 10, 20, 2, coords.posX, coords.posY,9, 80);
 
     }
     @Override

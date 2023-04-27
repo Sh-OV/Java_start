@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Outlaw extends Infantry {
 
 
-    public Outlaw() {
+    public Outlaw(Vector2D coords) {
 
-        super(8, 40, 6, 20, 8, new int[]{8,12}, 2, "stand",30);
+        super(8, 40, 6, 20, 8, 8,12, 2, coords.posX, coords.posY,30);
     }
     @Override
     public String getInfo() {

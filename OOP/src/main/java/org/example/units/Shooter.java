@@ -7,9 +7,9 @@ public abstract class Shooter extends BaseHero {
                    maxArrows,          // количество стрел максимально в начале боя
                    accuracy;           // точность
 
-    public Shooter(int initiative, float hp, int step, int attack, int def, int[] damage, int team, String stat,
+    public Shooter(int initiative, float hp, int step, int attack, int def, int damageMin, int damageMax, int team, int posX, int posY,
                    int arrows, int accuracy) {
-        super(initiative, hp, step, attack, def, damage, team, stat);
+        super(initiative, hp, step, attack, def, damageMin, damageMax, team, posX, posY);
         this.arrows = arrows;
         maxArrows = arrows;
         this.accuracy = accuracy;
@@ -18,8 +18,8 @@ public abstract class Shooter extends BaseHero {
         for (BaseHero friend : search_ally) {
             if(friend.getInfo() == "Крестьянин - " &&
                friend.hp > 0 &&
-               friend.stat == "stand"){
-                friend.stat = "busy";
+               friend.condition == "stand"){
+                friend.condition = "busy";
                 return true;
             }
         }
@@ -28,14 +28,14 @@ public abstract class Shooter extends BaseHero {
        @Override
     public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
         if(hp <= 0){
-            this.stat = "dead";
+            this.condition = "dead";
             return;
         }
         else if (arrows <= 0){
-            this.stat = "empty";
+            this.condition = "empty";
             return;
         }
-        BaseHero enemy_pers = find_closest_enemy(enemy);
+        BaseHero enemy_pers = ally.get(find_closest_enemy(enemy));
         accessing_hp_enemy(enemy_pers);
         if (!search_ally_peasant(ally)) {
                arrows = maxArrows - 1;
