@@ -10,21 +10,23 @@ public class Vector2D {
     }
 
     protected int isLeft_X(Vector2D oponent){
-        if (Math.abs(posX - oponent.posX) >= 2) {
-            if (posX < oponent.posX) return 1;
+        System.out.println("Math.abs(this.posX - oponent.posX) = " + Math.abs(this.posX - oponent.posX));
+        if (Math.abs(this.posX - oponent.posX) >= 2) {
+            if (this.posX < oponent.posX) return 1;
             else return 0;
         }
         else return 2;
     }
     protected int isLeft_Y(Vector2D oponent){
-        if (Math.abs(posY - oponent.posY) >= 2) {
-            if (posY < oponent.posY) return 1;
+        System.out.println("Math.abs(this.posY - oponent.posY) = " + Math.abs(this.posY - oponent.posY));
+        if (Math.abs(this.posY - oponent.posY) >= 2) {
+            if (this.posY < oponent.posY) return 1;
             else return 0;
         }
         else return 2;
     }
     protected boolean isLeft(Vector2D oponent){
-        if(Math.abs(posX - oponent.posX) > Math.abs(posY - oponent.posY)) {
+        if(Math.abs(this.posX - oponent.posX) > Math.abs(this.posY - oponent.posY)) {
             return false;
         }
         else return true;

@@ -46,8 +46,8 @@ public class Main {
             View.view();  // отображение в консоль
             input.nextLine();
             for (BaseHero human: sorted_hero) {
-                if (hero_light.contains(human)) human.step(hero_light, hero_darkness);
-                else human.step(hero_darkness, hero_light);
+                if (hero_light.contains(human)) human.step(hero_darkness, hero_light);
+                else human.step(hero_light, hero_darkness);
             }
         }
 
@@ -73,16 +73,16 @@ public class Main {
         for (int i = 0; i < UNITS; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
-                    hero.add(new Magician(new Vector2D(1, i+1)));
+                    hero.add(new Magician(new Vector2D(i+1, 1)));
                     break;
                 case 1:
-                    hero.add(new Spearman(new Vector2D(1, i+1)));
+                    hero.add(new Spearman(new Vector2D(i+1, 1)));
                     break;
                 case 2:
-                    hero.add(new Crossbowman(new Vector2D(1, i+1)));
+                    hero.add(new Crossbowman(new Vector2D(i+1, 1)));
                     break;
                 default:
-                    hero.add(new Peasant(new Vector2D(1, i+1), 1));
+                    hero.add(new Peasant(new Vector2D(i+1, 1), 1));
                     break;
             }
         }
@@ -92,16 +92,16 @@ public class Main {
         for (int i = 0; i < UNITS; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
-                    hero.add(new Monk(new Vector2D(UNITS, i+1)));
+                    hero.add(new Monk(new Vector2D(i+1, UNITS)));
                     break;
                 case 1:
-                    hero.add(new Outlaw(new Vector2D(UNITS, i+1)));
+                    hero.add(new Outlaw(new Vector2D(i+1, UNITS)));
                     break;
                 case 2:
-                    hero.add(new Sniper(new Vector2D(UNITS, i+1)));
+                    hero.add(new Sniper(new Vector2D(i+1, UNITS)));
                     break;
                 default:
-                    hero.add(new Peasant(new Vector2D(UNITS, i+1), 2));
+                    hero.add(new Peasant(new Vector2D(i+1, UNITS), 2));
                     break;
             }
         }

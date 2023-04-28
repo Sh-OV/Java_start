@@ -39,24 +39,30 @@ public abstract class BaseHero implements GameInterface {
 
         public String toString() {
             return getInfo() + name +
+                    " X:" + coords.posX +
+                    " Y:" + coords.posY +
                     " H:" + Math.round(hp) +
                     " D:" + def +
                     " A:" + attack +
                     " Dmg:" + Math.round(Math.abs((damageMin + damageMax)/2)) +
                     " " + condition;
         }
-/*
-int index = 0;
-        double min = Double.MAX_VALUE;
-        for (int i = 0; i < team.size(); i++) {
-            if(min > coords.getDistance(team.get(i).coords) && !team.get(i).state.equals("Die")) {
-                index = i;
-                min = coords.getDistance(team.get(i).coords);
-            }
-        }
- */
 
-   public int find_closest(ArrayList<BaseHero> hero){      // метод поиска ближайшего противника
+  public int find_closest_ally(ArrayList<BaseHero> hero){      // метод поиска ближайшего противника
+       int index = 0;
+       double min = Double.MAX_VALUE;
+       for (int i = 0; i < hero.size(); i++) {
+           if(min > coords.getDistance(hero.get(i).coords) && coords.getDistance(hero.get(i).coords) >= 1 && hero.get(i).hp > 0) {
+               index = i;
+               min = coords.getDistance(hero.get(i).coords);
+           }
+       }
+      System.out.println("для " + this.getInfo() + this.name + " ALLY index = " + index + ", " + hero.get(index).getInfo() + hero.get(index).name);
+       return index;
+   }
+
+
+   public int find_closest_enemy(ArrayList<BaseHero> hero){      // метод поиска ближайшего противника
        int index = 0;
        double min = Double.MAX_VALUE;
        for (int i = 0; i < hero.size(); i++) {
@@ -65,6 +71,7 @@ int index = 0;
                min = coords.getDistance(hero.get(i).coords);
            }
        }
+       System.out.println("для " + this.getInfo() + this.name + " EMENY index = " + index + ", " + hero.get(index).getInfo() + hero.get(index).name);
        return index;
    }
    public int getHp(){                             // метод получения остатка здоровья персонажа

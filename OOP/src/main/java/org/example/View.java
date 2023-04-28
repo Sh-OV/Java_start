@@ -9,7 +9,7 @@ public class View {
     private static final String top10 = formatDiv("a") + String.join("", Collections.nCopies(9, formatDiv("-b"))) + formatDiv("-c");
     private static final String midl10 = formatDiv("d") + String.join("", Collections.nCopies(9, formatDiv("-e"))) + formatDiv("-f");
     private static final String bottom10 = formatDiv("g") + String.join("", Collections.nCopies(9, formatDiv("-h"))) + formatDiv("-i");
-    private static void tabSetter(int cnt, int max){
+    private static void tabSetter(int cnt, int max){            // метод расставления элементов на "поле"
         int dif = max - cnt + 2;
         if (dif>0) System.out.printf("%" + dif + "s", ":\t"); else System.out.print(":\t");
     }
@@ -29,7 +29,7 @@ public class View {
         String out = "| ";
         for (BaseHero human: Main.sorted_hero) {
             if (human.getCoords()[0] == x && human.getCoords()[1] == y){
-                if (human.getHp() == 0) {
+                if (human.getHp() <= 0) {
                     out = "|" + (AnsiColors.ANSI_RED + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
                     break;
                 }
