@@ -69,7 +69,7 @@ public class Main {
         System.out.println("\n------Очередность ходов:------");
         sorted_hero.forEach(n -> System.out.println(n.toString()));*/
         }
-    public static ArrayList<BaseHero> team_1(ArrayList<BaseHero> hero){
+    private static ArrayList<BaseHero> team_1(ArrayList<BaseHero> hero){
         for (int i = 0; i < UNITS; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
@@ -88,7 +88,7 @@ public class Main {
         }
         return hero;
     }
-    public static ArrayList<BaseHero> team_2(ArrayList<BaseHero> hero){
+    private static ArrayList<BaseHero> team_2(ArrayList<BaseHero> hero){
         for (int i = 0; i < UNITS; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
@@ -107,7 +107,7 @@ public class Main {
         }
         return hero;
     }
-    public static ArrayList<BaseHero> getSortedList() {
+    private static ArrayList<BaseHero> getSortedList() {
         ArrayList<BaseHero> sortedList = new ArrayList<>();
         sortedList.addAll(hero_light);
         sortedList.addAll(hero_darkness);

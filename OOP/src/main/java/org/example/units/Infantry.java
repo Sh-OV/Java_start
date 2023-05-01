@@ -1,5 +1,7 @@
 package org.example.units;
 
+import org.example.View;
+
 import java.util.ArrayList;
 
 public abstract class Infantry extends BaseHero{
@@ -33,7 +35,7 @@ public abstract class Infantry extends BaseHero{
                 "this.getCoords()[1] = " + this.getCoords()[1]);
         if(coords.isLeft(enemy.coords) && (coords.isLeft_X(ally.coords) != 2 && coords.isLeft_Y(ally.coords) != 2)){
             if (coords.isLeft_X(enemy.coords) == 1){
-                this.getCoords()[0] += 1;
+                this.getCoords()[0] += step;
                 this.condition = "Go";
                 System.out.println("Ход " + getInfo() + name + "this.coords.posX+ = " + this.coords.posX);
             }

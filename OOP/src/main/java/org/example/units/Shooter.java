@@ -35,7 +35,7 @@ public abstract class Shooter extends BaseHero {
             this.condition = "Empty";
             return;
         }
-        BaseHero enemy_pers = ally.get(find_closest_enemy(enemy));
+        BaseHero enemy_pers = enemy.get(find_closest_enemy(enemy));
         accessing_hp_enemy(enemy_pers);
         if (!search_ally_peasant(ally)) {
                arrows = maxArrows - 1;

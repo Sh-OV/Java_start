@@ -48,11 +48,11 @@ public abstract class BaseHero implements GameInterface {
                     " " + condition;
         }
 
-  public int find_closest_ally(ArrayList<BaseHero> hero){      // метод поиска ближайшего противника
+  public int find_closest_ally(ArrayList<BaseHero> hero){      // метод поиска ближайшего союзника
        int index = 0;
        double min = Double.MAX_VALUE;
        for (int i = 0; i < hero.size(); i++) {
-           if(min > coords.getDistance(hero.get(i).coords) && coords.getDistance(hero.get(i).coords) >= 1 && hero.get(i).hp > 0) {
+           if(min > coords.getDistance(hero.get(i).coords) && coords.getDistance(hero.get(i).coords) >= 3 && hero.get(i).hp > 0) {
                index = i;
                min = coords.getDistance(hero.get(i).coords);
            }
@@ -78,13 +78,9 @@ public abstract class BaseHero implements GameInterface {
         return (int) ((float) this.hp / (float) this.max_hp * 100);
    }
 
-   public void accessing_hp_enemy(BaseHero pers) {  // метод обращения к параметрам противника и изменение их
-       pers.hp -= this.attack - pers.def;
+   public void accessing_hp_enemy(BaseHero pers) {  // метод изменения здоровья противника после удара
+       pers.hp -= (pers.def - this.attack)>0 ? this.damageMin : (pers.def - this.attack)<0 ? this.damageMax : (float) (this.damageMin + this.damageMax)/2;
    }
-
-//   public void accessing_stat_ally(BaseHero pers, String[] arr, int n) {   // изменение статуса у персонажа
-  //     pers.condition = arr[n];
-//   }
 
    public void accessing_hp_ally(BaseHero pers, int ratio){                // метод для лечения / воскрешения
         pers.hp *= ratio;
