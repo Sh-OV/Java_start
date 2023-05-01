@@ -18,8 +18,8 @@ public abstract class Shooter extends BaseHero {
         for (BaseHero friend : search_ally) {
             if(friend.getInfo() == "Фермер - " &&
                friend.hp > 0 &&
-               friend.condition == "Stand"){
-                friend.condition = "Busy";
+               friend.condition == " \uD83C\uDF1D Stand"){
+                friend.condition = " \uD83E\uDE9D Busy";
                 return true;
             }
         }
@@ -28,11 +28,11 @@ public abstract class Shooter extends BaseHero {
        @Override
     public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
         if(hp <= 0){
-            this.condition = "Dead";
+            this.condition = " \uD83D\uDC80 Dead";
             return;
         }
         else if (arrows <= 0){
-            this.condition = "Empty";
+            this.condition = " O Empty";
             return;
         }
         BaseHero enemy_pers = enemy.get(find_closest_enemy(enemy));

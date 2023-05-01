@@ -4,6 +4,7 @@ public class Vector2D {
     protected int posX;
     protected int posY;
 
+
     public Vector2D(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
@@ -13,14 +14,13 @@ public class Vector2D {
         return Math.sqrt(Math.pow(posX - oponent.posX,2) + Math.pow(posY - oponent.posY,2));
     }
 
-    protected int[] getCoord_move (Vector2D oponent){
-        int move_x = posX - oponent.posX;
-        int move_y = posY - oponent.posY;
-        if (Math.abs(move_x) > Math.abs(move_y)){
-            posX += Math.signum(move_x)*3;
-            posY += Math.signum(move_y)*3;
-        }
-        return new int[]{posX, posY};
+    protected void getCoord_move (Vector2D enemy, Vector2D ally){
+        int move_x = enemy.posX - posX;
+        int move_y = enemy.posY - posY;
+        if (Math.abs(move_x) > Math.abs(move_y))
+            posX += Math.signum(move_x);
+        else posY += Math.signum(move_y);
+       // if (Math.abs(move_x) < 2 || Math.abs(move_y) < 2)
     }
 
 

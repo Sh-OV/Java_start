@@ -15,74 +15,32 @@ public abstract class Infantry extends BaseHero{
     @Override
     public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
         if(hp <= 0){
-            this.condition = "Dead";
+            this.condition = " \uD83D\uDC80 Dead";
             return;
         }
-        BaseHero enemy_pers = ally.get(find_closest_enemy(enemy));
+        BaseHero enemy_pers = enemy.get(find_closest_enemy(enemy));
         BaseHero ally_pers = ally.get(find_closest_ally(ally));
-        getCoord_move(enemy_pers);
-
-//        walking (enemy_pers, ally_pers);
+        coords.getCoord_move(enemy_pers.coords, ally_pers.coords);
+        if(coords.getDistance(enemy_pers.coords) < 2) {
+            accessing_hp_enemy(enemy_pers);
+        }
         System.out.println(this.toString() + " идёт атаковать " + enemy_pers.toString());
 
     }
-    protected void getCoord_move (BaseHero enemy){
-        System.out.println("X = " + coords.posX + ", Y = " + coords.posY);
-        int move_x = coords.posX - enemy.coords.posX;
-        int move_y = coords.posY - enemy.coords.posY;
+ /*   protected void getCoord_move (BaseHero enemy){
+        System.out.println(toString() + ", this.coords.posX = " + coords.posX + ", this.coords.posY = " + coords.posY + ", \n" +
+                enemy.toString() + ", enemy_pers.coords.posX = " + enemy.coords.posX + ", enemy_pers.coords.posY = " + enemy.coords.posY);
+        int move_x = enemy.coords.posX - coords.posX;
+        int move_y = enemy.coords.posY - coords.posY;
         System.out.println("Math.abs(move_x) = " + Math.abs(move_x) + ", Math.abs(move_y) = " + Math.abs(move_y));
-        if (Math.abs(move_x) > Math.abs(move_y)){
-            coords.posX = (int) Math.signum(move_x);
-            coords.posY = (int) Math.signum(move_y);
-            System.out.println("Xism = " + coords.posX + ", Yism = " + coords.posY);
-        }
-        else {
-            coords.posX = (int) Math.signum(move_x);
-            coords.posY = (int) Math.signum(move_y);
-            System.out.println("Xism = " + coords.posX + ", Yism = " + coords.posY);
-        }
-    }
+        System.out.println("Math.signum(move_x) = " + (int) Math.signum(move_x) + "\n" +
+                "Math.signum(move_y) = " + (int) Math.signum(move_y));
+        if (Math.abs(move_x) > Math.abs(move_y))
+            coords.posX += (int) Math.signum(move_x);
+        else coords.posY += (int) Math.signum(move_y);
+        System.out.println("Xism = " + coords.posX + ", Yism = " + coords.posY);
+    }*/
 
 
-
-
-
-    public void walking (BaseHero enemy, BaseHero ally){
-        System.out.println("coords.isLeft(enemy.coords) = " + coords.isLeft(enemy.coords) + "\n" +
-                        "coords.isLeft_X(enemy.coords) = " + coords.isLeft_X(enemy.coords) +"\n" +
-                        "coords.isLeft_Y(enemy.coords) = " + coords.isLeft_Y(enemy.coords) +" \n" +
-                        "coords.isLeft_X(ally.coords) = " + coords.isLeft_X(ally.coords)+"\n" +
-                        "coords.isLeft_Y(ally.coords) = " + coords.isLeft_Y(ally.coords) + "\n" +
-                "this.getCoords()[0] = " + this.getCoords()[0] + "\n" +
-                "this.getCoords()[1] = " + this.getCoords()[1]);
-        if(coords.isLeft(enemy.coords) && (coords.isLeft_X(ally.coords) != 2 && coords.isLeft_Y(ally.coords) != 2)){
-            if (coords.isLeft_X(enemy.coords) == 1){
-                this.getCoords()[0] += step;
-                this.condition = "Go";
-                System.out.println("Ход " + getInfo() + name + "this.coords.posX+ = " + this.coords.posX);
-            }
-            else if (coords.isLeft_X(enemy.coords) == 0){
-                this.getCoords()[0] -= 1;
-                this.condition = "Go";
-                System.out.println("Ход " + getInfo() + name + "this.coords.posX- = " + this.coords.posX);
-            }
-            else accessing_hp_enemy(enemy);
-        }
-        else if(!coords.isLeft(enemy.coords) && (coords.isLeft_X(ally.coords) != 2 && coords.isLeft_Y(ally.coords) != 2)){
-            if (coords.isLeft_Y(enemy.coords) == 1){
-                this.getCoords()[1] += 1;
-                this.condition = "Go";
-                System.out.println("Ход " + getInfo() + name + "this.coords.posY+ = " + this.coords.posX);
-            }
-            else if (coords.isLeft_Y(enemy.coords) == 0){
-                this.getCoords()[1] -= 1;
-                this.condition = "Go";
-                System.out.println("Ход " + getInfo() + name + "this.coords.posY- = " + this.coords.posX);
-            }
-            else accessing_hp_enemy(enemy);
-            this.condition = "Stand";
-        }
-        System.out.println("Ошибка в методе walking (BaseHero enemy, BaseHero ally)");
-    }
 
 }

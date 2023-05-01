@@ -30,6 +30,7 @@ import org.example.units.*;
 
 import java.util.*;
 
+
 public class Main {
     public static int UNITS = 10;
     public static ArrayList<BaseHero> hero_light = new ArrayList<>();
@@ -38,13 +39,14 @@ public class Main {
     public static void main(String[] args) {
         team_1(hero_light);
         team_2(hero_darkness);
-
+        System.out.println(SpellBook.ressurect.getCost());
+        System.out.println(SpellBook.ressurect.getPower());
 
         Scanner input = new Scanner(System.in);
-        while (true){
+       while (true){
             sorted_hero =  getSortedList();
             View.view();  // отображение в консоль
-            input.nextLine();
+           input.nextLine();
             for (BaseHero human: sorted_hero) {
                 if (hero_light.contains(human)) human.step(hero_darkness, hero_light);
                 else human.step(hero_light, hero_darkness);
@@ -114,8 +116,8 @@ public class Main {
         sortedList.sort(new Comparator<BaseHero>() {
             @Override
             public int compare(BaseHero t0, BaseHero t1) {
-                if (t1.initiative == t0.initiative) return (int) (t1.getHp() - t0.getHp());
-                else  return (int) (t1.initiative - t0.initiative);
+                if (t1.initiative == t0.initiative) return t1.getHp() - t0.getHp();
+                else  return t1.initiative - t0.initiative;
             }
         });
 
