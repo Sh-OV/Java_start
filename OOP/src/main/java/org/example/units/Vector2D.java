@@ -9,6 +9,22 @@ public class Vector2D {
         this.posY = posY;
     }
 
+    protected double getDistance(Vector2D oponent){
+        return Math.sqrt(Math.pow(posX - oponent.posX,2) + Math.pow(posY - oponent.posY,2));
+    }
+
+    protected int[] getCoord_move (Vector2D oponent){
+        int move_x = posX - oponent.posX;
+        int move_y = posY - oponent.posY;
+        if (Math.abs(move_x) > Math.abs(move_y)){
+            posX += Math.signum(move_x)*3;
+            posY += Math.signum(move_y)*3;
+        }
+        return new int[]{posX, posY};
+    }
+
+
+
     protected int isLeft_X(Vector2D oponent){
         System.out.println("Math.abs(this.posX - oponent.posX) = " + Math.abs(this.posX - oponent.posX));
         if (Math.abs(this.posX - oponent.posX) >= 2) {
@@ -32,9 +48,7 @@ public class Vector2D {
         else return true;
     }
 
-    protected double getDistance(Vector2D oponent){
-        return Math.sqrt(Math.pow(posX - oponent.posX,2) + Math.pow(posY - oponent.posY,2));
-    }
+
 
 
 }

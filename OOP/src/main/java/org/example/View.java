@@ -27,14 +27,14 @@ public class View {
     }
     private static String getChar(int x, int y){
         String out = "|   ";
-        for (BaseHero human: Main.sorted_hero) {
-            if (human.getCoords()[0] == x && human.getCoords()[1] == y){
-                if (human.getHp() <= 0) {
-                    out = "| " + (AnsiColors.ANSI_RED + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET) + " ";
+        for (BaseHero hero: Main.sorted_hero) {
+            if (hero.getCoords()[0] == x && hero.getCoords()[1] == y){
+                if (hero.getHp() <= 0) {
+                    out = "| " + (AnsiColors.ANSI_RED + hero.getInfo().charAt(0) + AnsiColors.ANSI_RESET) + " ";
                     break;
                 }
-                if (Main.hero_darkness.contains(human)) out = "| " + (AnsiColors.ANSI_GREEN + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET) + " ";
-                if (Main.hero_light.contains(human)) out = "| " + (AnsiColors.ANSI_BLUE + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET) + " ";
+                if (Main.hero_darkness.contains(hero)) out = "| " + (AnsiColors.ANSI_GREEN + hero.getInfo().charAt(0) + AnsiColors.ANSI_RESET) + " ";
+                if (Main.hero_light.contains(hero)) out = "| " + (AnsiColors.ANSI_BLUE + hero.getInfo().charAt(0) + AnsiColors.ANSI_RESET) + " ";
                 break;
             }
         }

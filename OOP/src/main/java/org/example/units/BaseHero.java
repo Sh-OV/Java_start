@@ -52,7 +52,7 @@ public abstract class BaseHero implements GameInterface {
        int index = 0;
        double min = Double.MAX_VALUE;
        for (int i = 0; i < hero.size(); i++) {
-           if(min > coords.getDistance(hero.get(i).coords) && coords.getDistance(hero.get(i).coords) >= 3 && hero.get(i).hp > 0) {
+           if(min > coords.getDistance(hero.get(i).coords) && coords.getDistance(hero.get(i).coords) >= 1 && hero.get(i).hp > 0) {
                index = i;
                min = coords.getDistance(hero.get(i).coords);
            }

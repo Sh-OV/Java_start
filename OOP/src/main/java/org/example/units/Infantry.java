@@ -20,10 +20,32 @@ public abstract class Infantry extends BaseHero{
         }
         BaseHero enemy_pers = ally.get(find_closest_enemy(enemy));
         BaseHero ally_pers = ally.get(find_closest_ally(ally));
-        walking (enemy_pers, ally_pers);
+        getCoord_move(enemy_pers);
+
+//        walking (enemy_pers, ally_pers);
         System.out.println(this.toString() + " идёт атаковать " + enemy_pers.toString());
 
     }
+    protected void getCoord_move (BaseHero enemy){
+        System.out.println("X = " + coords.posX + ", Y = " + coords.posY);
+        int move_x = coords.posX - enemy.coords.posX;
+        int move_y = coords.posY - enemy.coords.posY;
+        System.out.println("Math.abs(move_x) = " + Math.abs(move_x) + ", Math.abs(move_y) = " + Math.abs(move_y));
+        if (Math.abs(move_x) > Math.abs(move_y)){
+            coords.posX = (int) Math.signum(move_x);
+            coords.posY = (int) Math.signum(move_y);
+            System.out.println("Xism = " + coords.posX + ", Yism = " + coords.posY);
+        }
+        else {
+            coords.posX = (int) Math.signum(move_x);
+            coords.posY = (int) Math.signum(move_y);
+            System.out.println("Xism = " + coords.posX + ", Yism = " + coords.posY);
+        }
+    }
+
+
+
+
 
     public void walking (BaseHero enemy, BaseHero ally){
         System.out.println("coords.isLeft(enemy.coords) = " + coords.isLeft(enemy.coords) + "\n" +
