@@ -18,6 +18,11 @@ public abstract class Mag extends BaseHero {
     }
 
     @Override
+    public String toString() {
+        return super.toString() + " manna = " + manna;
+    }
+
+    @Override
     public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
         if(hp <= 0){
             this.condition = " \uD83D\uDC80 Dead";
@@ -28,7 +33,9 @@ public abstract class Mag extends BaseHero {
             for (BaseHero hero : ally) {
                 if (hero.hp <= 0) {
                     hero.hp = hero.max_hp * ressurect.getPower();
+                    if (hero.hp > hero.max_hp) hero.hp = hero.max_hp;
                     manna -= ressurect.getCost();
+                    System.out.println(toString() + " воскрешает " + hero.toString());
                     break;
                 }
             }
@@ -37,19 +44,24 @@ public abstract class Mag extends BaseHero {
             for (BaseHero hero : ally) {
                 if (hero.hp < hero.max_hp) {
                     hero.hp = (attack + def) * heal.getPower();
+                    if (hero.hp > hero.max_hp) hero.hp = hero.max_hp;
+                    System.out.println(toString() + " лечит " + hero.toString() + " +❤" + (attack + def) * heal.getPower());
                 }
             }
             manna -= heal.getCost();
         }
         else if (manna >= lightning.getCost()){
-            if (coords.getDistance(enemy_pers.coords) <= 4){
+            if (hp < max_hp || coords.getDistance(enemy_pers.coords) <= 4){
                 def *= (int) (1 + shield.getPower());
+                System.out.println(toString() + " ставит на себя щит " + enemy_pers.toString());
             }
             else enemy_pers.hp -= lightning.getPower();
+            System.out.println(toString() + " бьет молнией " + enemy_pers.toString());
             manna -= lightning.getCost();
         }
         else if (manna >= fist.getCost()){
             enemy_pers.hp -= fist.getPower();
+            System.out.println(toString() + " бьет кулаком " + enemy_pers.toString());
             manna -= fist.getCost();
         }
         else condition = " O Empty";

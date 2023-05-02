@@ -25,7 +25,13 @@ public abstract class Shooter extends BaseHero {
         }
         return false;
     }
-       @Override
+
+    @Override
+    public String toString() {
+        return super.toString() + " arrows = " + arrows;
+    }
+
+    @Override
     public void step(ArrayList<BaseHero> enemy, ArrayList<BaseHero> ally) {
         if(hp <= 0){
             this.condition = " \uD83D\uDC80 Dead";

@@ -80,7 +80,6 @@ public abstract class BaseHero implements GameInterface {
    public void accessing_hp_enemy(BaseHero pers) {  // метод изменения здоровья противника после удара
        float damage = (pers.def - attack)>0 ? damageMin : (pers.def - attack)<0 ? damageMax : (float) (damageMin + damageMax)/2;
        pers.hp -= damage;
-       System.out.println(getInfo() + "damage = " + damage);
    }
 
 }

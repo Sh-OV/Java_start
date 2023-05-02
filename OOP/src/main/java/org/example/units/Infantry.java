@@ -23,24 +23,10 @@ public abstract class Infantry extends BaseHero{
         coords.getCoord_move(enemy_pers.coords, ally_pers.coords);
         if(coords.getDistance(enemy_pers.coords) < 2) {
             accessing_hp_enemy(enemy_pers);
+            System.out.println(toString() + " атакует " + enemy_pers.toString());
+            return;
         }
-        System.out.println(this.toString() + " идёт атаковать " + enemy_pers.toString());
-
+        System.out.println(toString() + " идёт атаковать " + enemy_pers.toString());
     }
- /*   protected void getCoord_move (BaseHero enemy){
-        System.out.println(toString() + ", this.coords.posX = " + coords.posX + ", this.coords.posY = " + coords.posY + ", \n" +
-                enemy.toString() + ", enemy_pers.coords.posX = " + enemy.coords.posX + ", enemy_pers.coords.posY = " + enemy.coords.posY);
-        int move_x = enemy.coords.posX - coords.posX;
-        int move_y = enemy.coords.posY - coords.posY;
-        System.out.println("Math.abs(move_x) = " + Math.abs(move_x) + ", Math.abs(move_y) = " + Math.abs(move_y));
-        System.out.println("Math.signum(move_x) = " + (int) Math.signum(move_x) + "\n" +
-                "Math.signum(move_y) = " + (int) Math.signum(move_y));
-        if (Math.abs(move_x) > Math.abs(move_y))
-            coords.posX += (int) Math.signum(move_x);
-        else coords.posY += (int) Math.signum(move_y);
-        System.out.println("Xism = " + coords.posX + ", Yism = " + coords.posY);
-    }*/
-
-
 
 }
