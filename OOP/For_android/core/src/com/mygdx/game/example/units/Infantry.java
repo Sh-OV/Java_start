@@ -1,6 +1,6 @@
 package com.mygdx.game.example.units;
 
-import org.example.View;
+import com.badlogic.gdx.Gdx;
 
 import java.util.ArrayList;
 
@@ -24,6 +24,7 @@ public abstract class Infantry extends BaseHero{
         if(coords.getDistance(enemy_pers.coords) < 2) {
             accessing_hp_enemy(enemy_pers);
             System.out.println(toString() + " атакует " + enemy_pers.toString());
+            Gdx.graphics.setTitle(toString() + " атакует " + enemy_pers.toString());
             return;
         }
         System.out.println(toString() + " идёт атаковать " + enemy_pers.toString());

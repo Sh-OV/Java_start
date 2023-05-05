@@ -1,5 +1,7 @@
 package com.mygdx.game.example.units;
 
+import com.badlogic.gdx.Gdx;
+
 import java.util.ArrayList;
 
 public abstract class Shooter extends BaseHero {
@@ -47,5 +49,6 @@ public abstract class Shooter extends BaseHero {
                arrows = maxArrows - 1;
            }
         System.out.println(this.toString() + " атаковал " + enemy_pers.toString());
+        Gdx.graphics.setTitle(toString() + " атаковал " + enemy_pers.toString());
        }
 }

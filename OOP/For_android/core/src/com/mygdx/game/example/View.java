@@ -47,7 +47,7 @@ public class View {
             System.out.print(AnsiColors.ANSI_RED + "Step:" + steps + AnsiColors.ANSI_RESET);
         }
         steps++;
-        Main.sorted_hero.forEach((v) -> l[0] = Math.max(l[0], v.toString().length()));
+ //       Main.sorted_hero.forEach((v) -> l[0] = Math.max(l[0], v.toString().length()));
         System.out.print("_".repeat(l[0]*2));
         System.out.println("");
         System.out.print(top10 + "    ");

@@ -39,19 +39,9 @@ public class Main {
     public static void main(String[] args) {
         team_1(hero_light);
         team_2(hero_darkness);
-        System.out.println(SpellBook.ressurect.getCost());
-        System.out.println(SpellBook.ressurect.getPower());
+        motion();
 
-        Scanner input = new Scanner(System.in);
-       while (true){
-            sorted_hero =  getSortedList();
-            View.view();  // отображение в консоль
-           input.nextLine();
-            for (BaseHero human: sorted_hero) {
-                if (hero_light.contains(human)) human.step(hero_darkness, hero_light);
-                else human.step(hero_light, hero_darkness);
-            }
-        }
+
 
 /*        System.out.println("\n------Команда hero_darkness:------");
         hero_darkness.forEach(n -> System.out.println(n.toString()));
@@ -123,4 +113,17 @@ public class Main {
 
         return sortedList;
     }
+    private static void motion(){
+        Scanner input = new Scanner(System.in);
+
+        while (true){
+            sorted_hero =  getSortedList();
+            View.view();  // отображение в консоль
+            input.nextLine();
+            for (BaseHero human: sorted_hero) {
+                if (hero_light.contains(human)) human.step(hero_darkness, hero_light);
+                else human.step(hero_light, hero_darkness);
+            }
+    }
+}
 }

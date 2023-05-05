@@ -2,6 +2,8 @@ package com.mygdx.game.example.units;
 
 import static com.mygdx.game.example.units.SpellBook.*;
 
+import com.badlogic.gdx.Gdx;
+
 import java.util.ArrayList;
 
 public abstract class Mag extends BaseHero {
@@ -35,6 +37,7 @@ public abstract class Mag extends BaseHero {
                     if (hero.hp > hero.max_hp) hero.hp = hero.max_hp;
                     manna -= ressurect.getCost();
                     System.out.println(toString() + " воскрешает " + hero.toString());
+                    Gdx.graphics.setTitle(toString() + " воскрешает " + hero.toString());
                     break;
                 }
             }
@@ -45,6 +48,7 @@ public abstract class Mag extends BaseHero {
                     hero.hp = (attack + def) * heal.getPower();
                     if (hero.hp > hero.max_hp) hero.hp = hero.max_hp;
                     System.out.println(toString() + " лечит " + hero.toString() + " +❤" + (attack + def) * heal.getPower());
+                    Gdx.graphics.setTitle(toString() + " лечит " + hero.toString() + " +❤" + (attack + def) * heal.getPower());
                 }
             }
             manna -= heal.getCost();
@@ -53,14 +57,17 @@ public abstract class Mag extends BaseHero {
             if (hp < max_hp || coords.getDistance(enemy_pers.coords) <= 4){
                 def *= (int) (1 + shield.getPower());
                 System.out.println(toString() + " ставит на себя щит " + enemy_pers.toString());
+                Gdx.graphics.setTitle(toString() + " ставит на себя щит " + enemy_pers.toString());
             }
             else enemy_pers.hp -= lightning.getPower();
             System.out.println(toString() + " бьет молнией " + enemy_pers.toString());
+            Gdx.graphics.setTitle(toString() + " бьет молнией " + enemy_pers.toString());
             manna -= lightning.getCost();
         }
         else if (manna >= fist.getCost()){
             enemy_pers.hp -= fist.getPower();
             System.out.println(toString() + " бьет кулаком " + enemy_pers.toString());
+            Gdx.graphics.setTitle(toString() + " бьет кулаком " + enemy_pers.toString());
             manna -= fist.getCost();
         }
         else condition = " O Empty";

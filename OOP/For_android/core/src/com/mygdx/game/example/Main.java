@@ -35,81 +35,52 @@ public class Main {
     public static int UNITS = 10;
     public static ArrayList<BaseHero> hero_light = new ArrayList<>();
     public static ArrayList<BaseHero> hero_darkness = new ArrayList<>();
-    public static ArrayList<BaseHero> sorted_hero = new ArrayList<>();
+    public static ArrayList<BaseHero> sorted_hero = getSortedList();;
+
+
     public static void main(String[] args) {
-        team_1(hero_light);
-        team_2(hero_darkness);
-        System.out.println(SpellBook.ressurect.getCost());
-        System.out.println(SpellBook.ressurect.getPower());
-
-        Scanner input = new Scanner(System.in);
-       while (true){
-            sorted_hero =  getSortedList();
-            View.view();  // отображение в консоль
-           input.nextLine();
-            for (BaseHero human: sorted_hero) {
-                if (hero_light.contains(human)) human.step(hero_darkness, hero_light);
-                else human.step(hero_light, hero_darkness);
-            }
+        team_1();
+        team_2();
+        motion();
         }
-
-/*        System.out.println("\n------Команда hero_darkness:------");
-        hero_darkness.forEach(n -> System.out.println(n.toString()));
-
-        System.out.println("\n------Команда hero_light:------");
-        hero_light.forEach(n -> System.out.println(n.toString()));
-
-        System.out.println("-".repeat(30));
-        for (BaseHero hero:hero_darkness) {
-            hero.step(hero_light,hero_darkness);
-        }
-        for (BaseHero hero:hero_light) {
-            hero.step(hero_darkness, hero_light);
-        }
-        System.out.println("-".repeat(30));
-
-        System.out.println("\n------Очередность ходов:------");
-        sorted_hero.forEach(n -> System.out.println(n.toString()));*/
-        }
-    private static ArrayList<BaseHero> team_1(ArrayList<BaseHero> hero){
+    public static void team_1(){
         for (int i = 0; i < UNITS; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
-                    hero.add(new Magician(new Vector2D(i+1, 1)));
+                    hero_light.add(new Magician(new Vector2D(i+1, 1)));
                     break;
                 case 1:
-                    hero.add(new Spearman(new Vector2D(i+1, 1)));
+                    hero_light.add(new Spearman(new Vector2D(i+1, 1)));
                     break;
                 case 2:
-                    hero.add(new Crossbowman(new Vector2D(i+1, 1)));
+                    hero_light.add(new Crossbowman(new Vector2D(i+1, 1)));
                     break;
                 default:
-                    hero.add(new Peasant(new Vector2D(i+1, 1), 1));
+                    hero_light.add(new Peasant(new Vector2D(i+1, 1), 1));
                     break;
             }
         }
-        return hero;
     }
-    private static ArrayList<BaseHero> team_2(ArrayList<BaseHero> hero){
+    public static void team_2(){
         for (int i = 0; i < UNITS; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
-                    hero.add(new Monk(new Vector2D(i+1, UNITS)));
+                    hero_darkness.add(new Monk(new Vector2D(i+1, UNITS)));
                     break;
                 case 1:
-                    hero.add(new Outlaw(new Vector2D(i+1, UNITS)));
+                    hero_darkness.add(new Outlaw(new Vector2D(i+1, UNITS)));
                     break;
                 case 2:
-                    hero.add(new Sniper(new Vector2D(i+1, UNITS)));
+                    hero_darkness.add(new Sniper(new Vector2D(i+1, UNITS)));
                     break;
                 default:
-                    hero.add(new Peasant(new Vector2D(i+1, UNITS), 2));
+                    hero_darkness.add(new Peasant(new Vector2D(i+1, UNITS), 2));
                     break;
             }
         }
-        return hero;
     }
-    private static ArrayList<BaseHero> getSortedList() {
+    @SuppressWarnings("NewApi")
+    public static ArrayList<BaseHero> getSortedList() {
         ArrayList<BaseHero> sortedList = new ArrayList<>();
         sortedList.addAll(hero_light);
         sortedList.addAll(hero_darkness);
@@ -122,5 +93,13 @@ public class Main {
         });
 
         return sortedList;
+    }
+    public static char[] motion(){
+        while (true){
+             for (BaseHero human: sorted_hero) {
+                if (hero_light.contains(human)) human.step(hero_darkness, hero_light);
+                else human.step(hero_light, hero_darkness);
+            }
+        }
     }
 }
